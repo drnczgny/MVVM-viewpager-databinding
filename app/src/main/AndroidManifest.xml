@@ -17,7 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".jsonplaceholder.submodules.comment.CommentsActivity" />
         <activity android:name=".jsonplaceholder.main.JsonPlaceholderActivity"></activity>
     </application>
 

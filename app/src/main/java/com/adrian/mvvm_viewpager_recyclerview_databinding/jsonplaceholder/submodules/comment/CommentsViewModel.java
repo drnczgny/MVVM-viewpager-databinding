@@ -4,7 +4,7 @@ import android.databinding.Bindable;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerBaseViewModel;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * Created by cadri on 2017. 04. 09..
  */
 
-public class CommentsViewModel extends BaseViewModel {
+public class CommentsViewModel extends ViewPagerBaseViewModel {
 
     private CommentsRouter commentsRouter;
 

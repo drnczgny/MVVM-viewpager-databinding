@@ -3,16 +3,18 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.TestData;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di.JsonPlaceholderComponent;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.CommentsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.PostsRouter;
 
 import javax.inject.Inject;
 
-public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostsRouter, CommentsRouter {
+public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter {
 
     @Inject
     JsonPlaceholderViewModel jsonPlaceholderViewModel;
+
+    @Inject
+    TestData testData;
 
     @Override
     public BaseViewModel onCreate() {
