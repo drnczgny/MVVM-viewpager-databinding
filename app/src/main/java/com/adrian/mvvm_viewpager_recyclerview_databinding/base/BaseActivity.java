@@ -41,8 +41,9 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseVie
         getBinding().setVariable(getVariable(), viewModel);
     }
 
+    @Override
     public B getBinding() {
-        return binding;
+        return this.binding;
     }
 
     @Override

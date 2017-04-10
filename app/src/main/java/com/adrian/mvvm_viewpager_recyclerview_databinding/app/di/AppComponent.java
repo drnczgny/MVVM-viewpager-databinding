@@ -1,5 +1,6 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.app.di;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.app.MyApplication;
@@ -24,6 +25,8 @@ public interface AppComponent {
 
     @Named("jsonplaceholderapi")
     Retrofit retrofitForJsonPlaceholderApi();
+
+    Context context();
 
     final class Injector {
         private static AppComponent appComponent;

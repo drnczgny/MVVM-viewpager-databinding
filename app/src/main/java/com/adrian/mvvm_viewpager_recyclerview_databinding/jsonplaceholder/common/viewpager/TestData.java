@@ -1,8 +1,6 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager;
 
 
-import android.app.Activity;
-
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.Comment;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.CommentItemViewModel;
@@ -30,7 +28,7 @@ public class TestData {
         this.commentsViewModel = commentsViewModel;
     }
 
-    public static final List<String> getTitleList() {
+    public final List<String> getTitleList() {
         String title1 = "title1";
         String title2 = "title2";
         String title3 = "title3";
@@ -65,7 +63,7 @@ public class TestData {
         return list;
     }
 
-    public final List<DataModel> getRVDataModelForDifferentLayoutsList(Activity activity) {
+    public final List<DataModel> getRVDataModelForDifferentLayoutsList() {
         List<DataModel> list = new ArrayList<>();
         DataModel dataModel1 = new DataModel(postsViewModel);
         DataModel dataModel2 = new DataModel(commentsViewModel);

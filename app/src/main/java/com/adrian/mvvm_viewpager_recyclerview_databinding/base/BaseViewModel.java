@@ -19,9 +19,7 @@ public abstract class BaseViewModel extends BaseObservable {
         this.router = router;
     }
 
-    public BaseRouter getRouter() {
-        return this.router;
-    }
+    public abstract BaseRouter getRouter();
 
     public void finish() {
         router.finish();

@@ -7,11 +7,18 @@
     android:orientation="vertical"
     tools:context="com.adrian.mvvm_viewpager_recyclerview_databinding.main.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary" />
+
     <Button
         android:id="@+id/btnViewPager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Viewpager"
+        android:text="JsonPlaceholder viewpager"
         android:textAllCaps="false" />
 
 </LinearLayout>

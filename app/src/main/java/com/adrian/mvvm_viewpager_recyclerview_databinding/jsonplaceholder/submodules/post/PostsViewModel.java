@@ -4,7 +4,8 @@ import android.databinding.Bindable;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerBaseViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.base.di.BaseRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by cadri on 2017. 04. 09..
  */
 
-public class PostsViewModel extends ViewPagerBaseViewModel {
+public class PostsViewModel extends ViewPagerItemViewModel {
 
     private PostsRouter postsRouter;
 
@@ -47,6 +48,16 @@ public class PostsViewModel extends ViewPagerBaseViewModel {
         notifyPropertyChanged(BR.postItemViewModels);
     }
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_posts;
+    }
+
+    @Override
+    public void setLayoutId(int layoutId) {
+
+    }
+
     @Bindable
     public int getVariableId() {
         return variableId;
@@ -55,5 +66,9 @@ public class PostsViewModel extends ViewPagerBaseViewModel {
     public void setVariableId(int variableId) {
         this.variableId = variableId;
         notifyPropertyChanged(BR.variableId);
+    }
+
+    public BaseRouter getRouter() {
+        return postsRouter;
     }
 }

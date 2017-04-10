@@ -4,7 +4,8 @@ import android.databinding.Bindable;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerBaseViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.base.di.BaseRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by cadri on 2017. 04. 09..
  */
 
-public class CommentsViewModel extends ViewPagerBaseViewModel {
+public class CommentsViewModel extends ViewPagerItemViewModel {
 
     private CommentsRouter commentsRouter;
 
@@ -22,6 +23,7 @@ public class CommentsViewModel extends ViewPagerBaseViewModel {
 
     private int variableId = BR.viewModel;
 
+    private int layoutId = R.layout.activity_comments;
 
     public CommentsViewModel(CommentsRouter commentsRouter) {
         super(commentsRouter);
@@ -48,6 +50,16 @@ public class CommentsViewModel extends ViewPagerBaseViewModel {
         notifyPropertyChanged(BR.commentItemViewModels);
     }
 
+    @Override
+    public int getLayoutId() {
+        return this.layoutId;
+    }
+
+    @Override
+    public void setLayoutId(int layoutId) {
+
+    }
+
     @Bindable
     public int getVariableId() {
         return variableId;
@@ -56,5 +68,10 @@ public class CommentsViewModel extends ViewPagerBaseViewModel {
     public void setVariableId(int variableId) {
         this.variableId = variableId;
         notifyPropertyChanged(BR.variableId);
+    }
+
+    @Override
+    public BaseRouter getRouter() {
+        return commentsRouter;
     }
 }

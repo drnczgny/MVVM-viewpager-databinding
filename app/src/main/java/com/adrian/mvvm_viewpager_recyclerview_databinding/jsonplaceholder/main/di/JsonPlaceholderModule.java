@@ -29,14 +29,20 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
+    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel) {
+        return new TestData(postsViewModel, commentsViewModel);
+    }
+
+    @ActivityScope
+    @Provides
     JsonPlaceholderRouter providesJsonPlaceholderRouter() {
         return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    JsonPlaceholderViewModel providesJsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter) {
-        return new JsonPlaceholderViewModel(jsonPlaceholderRouter);
+    JsonPlaceholderViewModel providesJsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, TestData testData) {
+        return new JsonPlaceholderViewModel(jsonPlaceholderRouter, testData);
     }
 
     @ActivityScope
@@ -53,9 +59,5 @@ public class JsonPlaceholderModule {
         return new DataModel(commentsViewModel);
     }
 
-    @ActivityScope
-    @Provides
-    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel) {
-        return new TestData(postsViewModel, commentsViewModel);
-    }
+
 }

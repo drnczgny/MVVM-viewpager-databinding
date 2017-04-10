@@ -1,6 +1,6 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model;
 
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerBaseViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 
 /**
  * Created by cadri on 2017. 04. 09..
@@ -8,18 +8,19 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
 
 public class DataModel {
 
-    private ViewPagerBaseViewModel viewPagerBaseViewModel;
+    private ViewPagerItemViewModel viewPagerItemViewModel;
 
-    public DataModel(ViewPagerBaseViewModel viewPagerBaseViewModel) {
-        this.viewPagerBaseViewModel = viewPagerBaseViewModel;
+    public DataModel(ViewPagerItemViewModel viewPagerItemViewModel) {
+        this.viewPagerItemViewModel = viewPagerItemViewModel;
     }
 
-    public ViewPagerBaseViewModel getViewPagerBaseViewModel() {
-        return viewPagerBaseViewModel;
+    public ViewPagerItemViewModel getViewPagerItemViewModel() {
+        return viewPagerItemViewModel;
     }
 
-    public void setViewPagerBaseViewModel(ViewPagerBaseViewModel viewPagerBaseViewModel) {
-        this.viewPagerBaseViewModel = viewPagerBaseViewModel;
+    public void setViewPagerItemViewModel(ViewPagerItemViewModel viewPagerItemViewModel) {
+        this.viewPagerItemViewModel = viewPagerItemViewModel;
     }
 
 }
+

@@ -7,9 +7,15 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.base.di.BaseRouter;
  * Created by cadri on 2017. 04. 09..
  */
 
-public abstract class ViewPagerBaseViewModel extends BaseViewModel {
+public abstract class ViewPagerItemViewModel extends BaseViewModel {
 
-    public ViewPagerBaseViewModel(BaseRouter router) {
+    public ViewPagerItemViewModel(BaseRouter router) {
         super(router);
     }
+
+    public abstract int getLayoutId();
+
+    public abstract void setLayoutId(int layoutId);
+
+    public abstract int getVariableId();
 }
