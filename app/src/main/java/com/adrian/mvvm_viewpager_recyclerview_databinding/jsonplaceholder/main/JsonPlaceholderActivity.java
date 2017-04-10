@@ -8,11 +8,12 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ActivityJsonPlaceholderBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.TestData;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di.JsonPlaceholderComponent;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 import com.android.databinding.library.baseAdapters.BR;
 
 import javax.inject.Inject;
 
-public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter {
+public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostsRouter {
 
     @Inject
     JsonPlaceholderViewModel jsonPlaceholderViewModel;

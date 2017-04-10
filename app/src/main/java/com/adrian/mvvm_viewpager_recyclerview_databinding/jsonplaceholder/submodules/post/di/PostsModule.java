@@ -1,8 +1,9 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.PostsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,7 +17,14 @@ public class PostsModule {
 
     @ActivityScope
     @Provides
-    PostsViewModel providesPostsViewModel(JsonPlaceholderRouter jsonPlaceholderRouter) {
-        return new PostsViewModel(jsonPlaceholderRouter);
+    PostsModel providesPostsModel() {
+        return new PostsModel();
+    }
+
+
+    @ActivityScope
+    @Provides
+    PostsViewModel providesPostsViewModel(PostsModel postsModel, PostsRouter postsRouter) {
+        return new PostsViewModel(postsModel, postsRouter);
     }
 }

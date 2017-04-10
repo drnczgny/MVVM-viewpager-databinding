@@ -1,4 +1,4 @@
-package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment;
+package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.di.BaseRouter;
 

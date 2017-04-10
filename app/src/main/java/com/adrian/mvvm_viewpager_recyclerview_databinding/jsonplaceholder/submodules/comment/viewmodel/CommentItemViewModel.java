@@ -1,9 +1,10 @@
-package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment;
+package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel;
 
 import android.databinding.Bindable;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.recyclerview.ListItemViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
 
 
 /**

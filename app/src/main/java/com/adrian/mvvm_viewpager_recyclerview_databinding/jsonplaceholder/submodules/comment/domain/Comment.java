@@ -1,4 +1,4 @@
-package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment;
+package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain;
 
 /**
  * Created by cadri on 2017. 04. 08..

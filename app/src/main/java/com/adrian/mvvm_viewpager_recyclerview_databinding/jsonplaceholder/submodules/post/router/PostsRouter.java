@@ -1,4 +1,4 @@
-package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post;
+package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.di.BaseRouter;
 

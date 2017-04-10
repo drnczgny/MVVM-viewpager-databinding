@@ -6,8 +6,10 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.CommentsViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.PostsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
 
 import javax.inject.Named;
 
@@ -29,14 +31,26 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel) {
-        return new TestData(postsViewModel, commentsViewModel);
+    JsonPlaceholderRouter providesJsonPlaceholderRouter() {
+        return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    JsonPlaceholderRouter providesJsonPlaceholderRouter() {
+    CommentsRouter providesCommentsRouter(JsonPlaceholderRouter jsonPlaceholderRouter) {
         return this.jsonPlaceholderActivity;
+    }
+
+    @ActivityScope
+    @Provides
+    PostsRouter providesPostsRouter(JsonPlaceholderRouter jsonPlaceholderRouter) {
+        return this.jsonPlaceholderActivity;
+    }
+
+    @ActivityScope
+    @Provides
+    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel) {
+        return new TestData(postsViewModel, commentsViewModel);
     }
 
     @ActivityScope

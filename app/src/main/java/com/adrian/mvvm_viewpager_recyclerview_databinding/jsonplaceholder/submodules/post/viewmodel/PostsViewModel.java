@@ -1,10 +1,12 @@
-package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post;
+package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel;
 
 import android.databinding.Bindable;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 
 import java.util.List;
 
@@ -14,14 +16,17 @@ import java.util.List;
 
 public class PostsViewModel extends ViewPagerItemViewModel {
 
+    private PostsModel postsModel;
+
     private PostsRouter postsRouter;
 
     private List<PostItemViewModel> postItemViewModels;
 
     private int itemLayoutId = R.layout.viewpager_layout_posts;
 
-    public PostsViewModel(PostsRouter postsRouter) {
+    public PostsViewModel(PostsModel postsModel,PostsRouter postsRouter) {
         super(postsRouter);
+        this.postsModel = postsModel;
         this.postsRouter = postsRouter;
     }
 
@@ -45,11 +50,10 @@ public class PostsViewModel extends ViewPagerItemViewModel {
         notifyPropertyChanged(BR.itemLayoutId);
     }
 
-
     @Bindable
     @Override
     public int getLayoutId() {
-        return R.layout.activity_posts;
+        return R.layout.viewpager_layout_posts;
     }
 
     @Bindable

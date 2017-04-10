@@ -12,7 +12,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
  * Created by cadri on 2017. 04. 09..
  */
 
-public class JsonPlaceholderViewModel extends BaseViewModel{
+public class JsonPlaceholderViewModel extends BaseViewModel {
 
     private JsonPlaceholderRouter jsonPlaceholderRouter;
 

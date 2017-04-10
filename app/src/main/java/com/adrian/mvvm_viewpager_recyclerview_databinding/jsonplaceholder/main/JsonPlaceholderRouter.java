@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main;
 
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.CommentsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.PostsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 
 /**
  * Created by cadri on 2017. 04. 09..
