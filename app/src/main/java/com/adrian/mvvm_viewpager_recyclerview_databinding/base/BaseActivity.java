@@ -46,6 +46,10 @@ public abstract class BaseActivity<T extends ViewDataBinding, VM extends BaseVie
     public abstract
     @LayoutRes
     int getLayoutId();
+
+    public void finish() {
+        this.finish();
+    }
 }
 
 

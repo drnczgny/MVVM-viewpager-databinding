@@ -26,7 +26,6 @@ public class CommentsViewModel extends ViewPagerItemViewModel {
     private List<CommentItemViewModel> commentItemViewModels = new ArrayList<>();
 
     public CommentsViewModel(CommentsModel commentsModel, CommentsRouter commentsRouter) {
-        super(commentsRouter);
         this.commentsModel = commentsModel;
         this.commentsRouter = commentsRouter;
         commentItemViewModels = CommentsModel.getCommentItemViewModelList(5);

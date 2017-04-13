@@ -8,13 +8,15 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ActivityJs
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.TestData;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.adapter.ViewPagerWithDifferentLayoutsAdapter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di.JsonPlaceholderComponent;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 import com.android.databinding.library.baseAdapters.BR;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
-public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostsRouter {
+public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostsRouter, CommentsRouter, AlbumsRouter {
 
     @Inject
     JsonPlaceholderViewModel jsonPlaceholderViewModel;
@@ -29,6 +31,8 @@ public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceho
         super.onCreate(savedInstanceState);
         bind();
         setSupportActionBar(binding.toolbar);
+
+        jsonPlaceholderViewModel.setUpViewPager();
     }
 
     @Override

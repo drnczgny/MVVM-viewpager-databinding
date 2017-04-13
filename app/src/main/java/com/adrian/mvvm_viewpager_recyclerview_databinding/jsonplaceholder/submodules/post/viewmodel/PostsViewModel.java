@@ -25,7 +25,6 @@ public class PostsViewModel extends ViewPagerItemViewModel {
 
 
     public PostsViewModel(PostsModel postsModel,PostsRouter postsRouter) {
-        super(postsRouter);
         this.postsModel = postsModel;
         this.postsRouter = postsRouter;
         postItemViewModels = PostsModel.getPostItemViewModelList(4);
