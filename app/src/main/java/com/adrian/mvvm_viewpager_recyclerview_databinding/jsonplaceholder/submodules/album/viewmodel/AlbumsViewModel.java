@@ -18,15 +18,15 @@ import com.android.databinding.library.baseAdapters.BR;
 
 public class AlbumsViewModel extends ViewPagerItemViewModel implements AlbumsModel.OnAlbumCallback {
 
-    private AlbumsModel albumsModel;
-
     private AlbumsRouter albumsRouter;
+
+    private AlbumsModel albumsModel;
 
     private List<AlbumItemViewModel> albumItemViewModels = new ArrayList<>();
 
-    public AlbumsViewModel(AlbumsModel albumsModel, AlbumsRouter albumsRouter) {
-        this.albumsModel = albumsModel;
+    public AlbumsViewModel(AlbumsRouter albumsRouter, AlbumsModel albumsModel) {
         this.albumsRouter = albumsRouter;
+        this.albumsModel = albumsModel;
 
         albumsModel.registerCallback(this);
         albumsModel.findAllAlbum();

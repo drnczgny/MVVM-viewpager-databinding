@@ -6,7 +6,6 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.recyclerview.ListItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
 
-
 /**
  * Created by cadri on 2017. 04. 08..
  */
@@ -85,6 +84,4 @@ public class CommentItemViewModel extends ListItemViewModel {
                 "comment=" + comment +
                 '}';
     }
-
-
 }

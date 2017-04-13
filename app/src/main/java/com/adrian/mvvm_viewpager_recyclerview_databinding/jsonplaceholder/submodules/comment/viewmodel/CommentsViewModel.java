@@ -26,9 +26,9 @@ public class CommentsViewModel extends ViewPagerItemViewModel implements Comment
 
     private List<CommentItemViewModel> commentItemViewModels = new ArrayList<>();
 
-    public CommentsViewModel(CommentsModel commentsModel, CommentsRouter commentsRouter) {
-        this.commentsModel = commentsModel;
+    public CommentsViewModel(CommentsRouter commentsRouter, CommentsModel commentsModel) {
         this.commentsRouter = commentsRouter;
+        this.commentsModel = commentsModel;
 
         commentsModel.registerCallback(this);
         commentsModel.findAllComment();

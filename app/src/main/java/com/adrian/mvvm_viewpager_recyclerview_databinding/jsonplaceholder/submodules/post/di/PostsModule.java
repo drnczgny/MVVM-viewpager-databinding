@@ -24,7 +24,7 @@ public class PostsModule {
 
     @ActivityScope
     @Provides
-    PostsViewModel providesPostsViewModel(PostsModel postsModel, PostsRouter postsRouter) {
-        return new PostsViewModel(postsModel, postsRouter);
+    PostsViewModel providesPostsViewModel(PostsRouter postsRouter, PostsModel postsModel) {
+        return new PostsViewModel(postsRouter, postsModel);
     }
 }

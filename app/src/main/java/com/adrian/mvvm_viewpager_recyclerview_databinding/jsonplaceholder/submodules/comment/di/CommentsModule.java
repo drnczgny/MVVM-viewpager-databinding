@@ -24,7 +24,7 @@ public class CommentsModule {
 
     @ActivityScope
     @Provides
-    CommentsViewModel providesCommentsViewModel(CommentsModel commentsModel, CommentsRouter commentsRouter) {
-        return new CommentsViewModel(commentsModel, commentsRouter);
+    CommentsViewModel providesCommentsViewModel(CommentsRouter commentsRouter, CommentsModel commentsModel) {
+        return new CommentsViewModel(commentsRouter, commentsModel);
     }
 }

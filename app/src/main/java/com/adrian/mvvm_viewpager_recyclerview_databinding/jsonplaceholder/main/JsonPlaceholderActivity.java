@@ -10,13 +10,14 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di.JsonPlaceholderComponent;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumsRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotosRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 import com.android.databinding.library.baseAdapters.BR;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
-public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostsRouter, CommentsRouter, AlbumsRouter {
+public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostsRouter, CommentsRouter, AlbumsRouter, PhotosRouter {
 
     @Inject
     JsonPlaceholderViewModel jsonPlaceholderViewModel;

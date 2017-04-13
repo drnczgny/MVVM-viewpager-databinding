@@ -5,6 +5,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivitySco
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.di.AlbumsModule;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.di.CommentsModule;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.di.PhotosModule;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di.PostsModule;
 
 import dagger.Component;
@@ -19,7 +20,8 @@ import dagger.Component;
         JsonPlaceholderServiceModule.class,
         PostsModule.class,
         CommentsModule.class,
-        AlbumsModule.class
+        AlbumsModule.class,
+        PhotosModule.class
 })
 public interface JsonPlaceholderComponent {
 

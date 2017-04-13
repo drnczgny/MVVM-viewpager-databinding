@@ -18,15 +18,15 @@ import java.util.List;
 
 public class PostsViewModel extends ViewPagerItemViewModel implements PostsModel.OnPostsCallback {
 
-    private PostsModel postsModel;
-
     private PostsRouter postsRouter;
+
+    private PostsModel postsModel;
 
     private List<PostItemViewModel> postItemViewModels = new ArrayList<>();
 
-    public PostsViewModel(PostsModel postsModel, PostsRouter postsRouter) {
-        this.postsModel = postsModel;
+    public PostsViewModel(PostsRouter postsRouter, PostsModel postsModel) {
         this.postsRouter = postsRouter;
+        this.postsModel = postsModel;
 
         postsModel.registerCallback(this);
         postsModel.findAllPost();

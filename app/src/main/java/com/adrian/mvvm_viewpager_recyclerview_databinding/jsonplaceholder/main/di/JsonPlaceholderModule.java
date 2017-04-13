@@ -10,6 +10,8 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumsViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotosRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotosViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
 
@@ -57,8 +59,14 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel, AlbumsViewModel albumsViewModel) {
-        return new TestData(postsViewModel, commentsViewModel, albumsViewModel);
+    PhotosRouter providesPhotoRouter() {
+        return this.jsonPlaceholderActivity;
+    }
+
+    @ActivityScope
+    @Provides
+    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel, AlbumsViewModel albumsViewModel, PhotosViewModel photosViewModel) {
+        return new TestData(postsViewModel, commentsViewModel, albumsViewModel, photosViewModel);
     }
 
     @ActivityScope

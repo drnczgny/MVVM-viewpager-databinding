@@ -24,7 +24,7 @@ public class AlbumsModule {
 
     @ActivityScope
     @Provides
-    AlbumsViewModel providesAlbumsViewModel(AlbumsModel albumsModel, AlbumsRouter albumsRouter) {
-        return new AlbumsViewModel(albumsModel, albumsRouter);
+    AlbumsViewModel providesAlbumsViewModel(AlbumsRouter albumsRouter, AlbumsModel albumsModel) {
+        return new AlbumsViewModel(albumsRouter, albumsModel);
     }
 }

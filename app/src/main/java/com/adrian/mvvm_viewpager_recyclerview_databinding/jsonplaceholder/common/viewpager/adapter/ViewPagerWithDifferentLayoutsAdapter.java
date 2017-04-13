@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutAlbumsBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutCommentsBinding;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutPhotosBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutPostsBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
 
@@ -70,6 +71,15 @@ public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
             viewpagerLayoutAlbumsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
             collection.addView(viewpagerLayoutAlbumsBinding.getRoot());
             return viewpagerLayoutAlbumsBinding.getRoot();
+        }
+
+        if (position == 3) {
+            ViewpagerLayoutPhotosBinding viewpagerLayoutPhotosBinding = ViewpagerLayoutPhotosBinding.inflate(layoutInflater, collection, false);
+            viewpagerLayoutPhotosBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+
+            viewpagerLayoutPhotosBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
+            collection.addView(viewpagerLayoutPhotosBinding.getRoot());
+            return viewpagerLayoutPhotosBinding.getRoot();
         }
 
         binding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());

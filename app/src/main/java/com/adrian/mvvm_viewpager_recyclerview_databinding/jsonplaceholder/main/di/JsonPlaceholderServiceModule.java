@@ -3,6 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumsService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotosService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostsService;
 
 import javax.inject.Named;
@@ -37,5 +38,12 @@ public class JsonPlaceholderServiceModule {
     AlbumsService providesAlbumsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         AlbumsService albumsService = retrofit.create(AlbumsService.class);
         return albumsService;
+    }
+
+    @ActivityScope
+    @Provides
+    PhotosService providesPhotosService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        PhotosService photosService = retrofit.create(PhotosService.class);
+        return photosService;
     }
 }
