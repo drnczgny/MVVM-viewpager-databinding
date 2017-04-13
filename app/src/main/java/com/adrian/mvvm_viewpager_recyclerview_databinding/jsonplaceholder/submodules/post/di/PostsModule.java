@@ -3,6 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submo
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostsService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
 
 import dagger.Module;
@@ -17,8 +18,8 @@ public class PostsModule {
 
     @ActivityScope
     @Provides
-    PostsModel providesPostsModel() {
-        return new PostsModel();
+    PostsModel providesPostsModel(PostsService postsService) {
+        return new PostsModel(postsService);
     }
 
 

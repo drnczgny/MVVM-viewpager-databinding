@@ -1,10 +1,15 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model;
 
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentItemViewModel;
+import android.util.Log;
 
-import java.util.ArrayList;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
+
 import java.util.List;
+
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by cadri on 2017. 04. 11..
@@ -12,24 +17,88 @@ import java.util.List;
 
 public class CommentsModel {
 
-    private static Comment createTestComment(final int id) {
-        Comment comment = new Comment();
-        comment.setId(id);
-        comment.setPostId(id);
-        comment.setName("name" + id);
-        comment.setEmail("email" + id);
-        comment.setBody("body" + id);
-        return comment;
+    private static final String TAG = CommentsModel.class.getName();
+
+    private final CommentsService commentsService;
+
+    private Observer<List<Comment>> commentListObserver;
+
+    private Observer<Comment> commentObserver;
+
+    private OnCommentCallback callback;
+
+    public CommentsModel(CommentsService commentsService) {
+        this.commentsService = commentsService;
+
+        createCommentListObserver();
+        createCommentObserver();
+
     }
 
-    public static List<CommentItemViewModel> getCommentItemViewModelList(final int num) {
-        List<CommentItemViewModel> list = new ArrayList<>();
-        for (int i = 1; i <= num; i++) {
-            Comment comment = createTestComment(i);
-            CommentItemViewModel commentItemViewModel = new CommentItemViewModel(comment);
-            list.add(commentItemViewModel);
-        }
-        return list;
+    private void createCommentListObserver() {
+        commentListObserver = new Observer<List<Comment>>() {
+            @Override
+            public void onCompleted() {
+                Log.i(TAG, "onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i(TAG, "onError");
+                e.printStackTrace();
+                callback.onFindAllCommentError(e);
+            }
+
+            @Override
+            public void onNext(List<Comment> comments) {
+                Log.i(TAG, "onNext");
+                Log.i(TAG, comments.toString());
+                callback.onFindAllCommentSuccess(comments);
+            }
+        };
     }
 
+    private void createCommentObserver() {
+        commentObserver = new Observer<Comment>() {
+            @Override
+            public void onCompleted() {
+                Log.i(TAG, "onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i(TAG, "onError");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(Comment comment) {
+                Log.i(TAG, "onNext");
+                Log.i(TAG, comment.toString());
+            }
+        };
+    }
+
+    public void findAllComment() {
+        commentsService.findAllComment()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(commentListObserver);
+    }
+
+    public void registerCallback(OnCommentCallback callback) {
+        this.callback = callback;
+    }
+
+    public void unRegisterCallback() {
+        this.callback = null;
+    }
+
+    public interface OnCommentCallback {
+
+        void onFindAllCommentSuccess(List<Comment> comments);
+
+        void onFindAllCommentError(Throwable t);
+
+    }
 }

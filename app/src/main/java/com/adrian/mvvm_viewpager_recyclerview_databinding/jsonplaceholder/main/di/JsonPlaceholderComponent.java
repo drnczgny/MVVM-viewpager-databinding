@@ -14,7 +14,13 @@ import dagger.Component;
  */
 
 @ActivityScope
-@Component(dependencies = AppComponent.class, modules = {JsonPlaceholderModule.class, PostsModule.class, CommentsModule.class, AlbumsModule.class})
+@Component(dependencies = AppComponent.class, modules = {
+        JsonPlaceholderModule.class,
+        JsonPlaceholderServiceModule.class,
+        PostsModule.class,
+        CommentsModule.class,
+        AlbumsModule.class
+})
 public interface JsonPlaceholderComponent {
 
     void inject(JsonPlaceholderActivity jsonPlaceholderActivity);

@@ -3,6 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submo
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentsModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
 
 import dagger.Module;
@@ -17,8 +18,8 @@ public class CommentsModule {
 
     @ActivityScope
     @Provides
-    CommentsModel providesCommentsModel() {
-        return new CommentsModel();
+    CommentsModel providesCommentsModel(CommentsService commentsService) {
+        return new CommentsModel(commentsService);
     }
 
     @ActivityScope

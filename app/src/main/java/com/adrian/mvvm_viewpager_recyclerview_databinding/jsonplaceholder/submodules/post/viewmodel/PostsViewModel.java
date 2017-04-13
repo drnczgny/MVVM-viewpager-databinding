@@ -5,6 +5,7 @@ import android.databinding.Bindable;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.domain.Post;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by cadri on 2017. 04. 09..
  */
 
-public class PostsViewModel extends ViewPagerItemViewModel {
+public class PostsViewModel extends ViewPagerItemViewModel implements PostsModel.OnPostsCallback {
 
     private PostsModel postsModel;
 
@@ -23,11 +24,30 @@ public class PostsViewModel extends ViewPagerItemViewModel {
 
     private List<PostItemViewModel> postItemViewModels = new ArrayList<>();
 
-
     public PostsViewModel(PostsModel postsModel,PostsRouter postsRouter) {
         this.postsModel = postsModel;
         this.postsRouter = postsRouter;
-        postItemViewModels = PostsModel.getPostItemViewModelList(4);
+
+        postsModel.registerCallback(this);
+        postsModel.findAllPost();
+    }
+
+    @Override
+    public void onFindAllPostSuccess(List<Post> posts) {
+        setPostItemViewModels(convertToViewModel(posts));
+    }
+
+    @Override
+    public void onFindAllPostError(Throwable t) {
+        t.printStackTrace();
+    }
+
+    private List<PostItemViewModel> convertToViewModel(List<Post> posts) {
+        List<PostItemViewModel> postItemViewModels = new ArrayList<>();
+        for (Post p : posts) {
+            postItemViewModels.add(new PostItemViewModel(p));
+        }
+        return postItemViewModels;
     }
 
     @Bindable
@@ -56,5 +76,4 @@ public class PostsViewModel extends ViewPagerItemViewModel {
     public int getVariableId() {
         return BR.viewModel;
     }
-
 }
