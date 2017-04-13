@@ -8,7 +8,10 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentsModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.adrian.mvvm_viewpager_recyclerview_databinding.R.layout.rv_item_comment;
 
 /**
  * Created by cadri on 2017. 04. 09..
@@ -20,14 +23,13 @@ public class CommentsViewModel extends ViewPagerItemViewModel {
 
     private CommentsModel commentsModel;
 
-    private List<CommentItemViewModel> commentItemViewModels;
-
-    private int itemLayoutId = R.layout.viewpager_layout_comments;
+    private List<CommentItemViewModel> commentItemViewModels = new ArrayList<>();
 
     public CommentsViewModel(CommentsModel commentsModel, CommentsRouter commentsRouter) {
         super(commentsRouter);
         this.commentsModel = commentsModel;
         this.commentsRouter = commentsRouter;
+        commentItemViewModels = CommentsModel.getCommentItemViewModelList(5);
     }
 
     @Bindable
@@ -42,12 +44,7 @@ public class CommentsViewModel extends ViewPagerItemViewModel {
 
     @Bindable
     public int getItemLayoutId() {
-        return itemLayoutId;
-    }
-
-    public void setItemLayoutId(int itemLayoutId) {
-        this.itemLayoutId = itemLayoutId;
-        notifyPropertyChanged(BR.itemLayoutId);
+        return R.layout.rv_item_comment;
     }
 
     @Bindable

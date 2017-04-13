@@ -27,13 +27,13 @@ public class JsonPlaceholderViewModel extends BaseViewModel {
         this.jsonPlaceholderRouter = jsonPlaceholderRouter;
         this.testData = testData;
 
-        init();
+        setUpViewPager();
     }
 
-    private void init() {
+    private void setUpViewPager() {
         this.viewPager = ((ActivityJsonPlaceholderBinding)jsonPlaceholderRouter.getBinding()).viewpager;
         this.tabLayout = ((ActivityJsonPlaceholderBinding)jsonPlaceholderRouter.getBinding()).tabs;
-        viewPager.setAdapter(new ViewPagerWithDifferentLayoutsAdapter((JsonPlaceholderActivity)jsonPlaceholderRouter, testData.getRVDataModelForDifferentLayoutsList(), testData.getTitleList()));
+        viewPager.setAdapter(new ViewPagerWithDifferentLayoutsAdapter((JsonPlaceholderActivity)jsonPlaceholderRouter, testData.getViewPagerDataModel(), testData.getTitleList()));
         tabLayout.setupWithViewPager(viewPager);
     }
 

@@ -59,7 +59,7 @@ public class TestData {
 //        return list;
 //    }
 
-    public final List<DataModel> getRVDataModelForDifferentLayoutsList() {
+    public final List<DataModel> getViewPagerDataModel() {
         List<DataModel> list = new ArrayList<>();
         DataModel dataModel1 = new DataModel(postsViewModel);
         DataModel dataModel2 = new DataModel(commentsViewModel);

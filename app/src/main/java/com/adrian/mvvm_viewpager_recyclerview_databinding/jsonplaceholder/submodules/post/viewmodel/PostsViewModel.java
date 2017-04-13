@@ -8,6 +8,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,14 +21,14 @@ public class PostsViewModel extends ViewPagerItemViewModel {
 
     private PostsRouter postsRouter;
 
-    private List<PostItemViewModel> postItemViewModels;
+    private List<PostItemViewModel> postItemViewModels = new ArrayList<>();
 
-    private int itemLayoutId = R.layout.viewpager_layout_posts;
 
     public PostsViewModel(PostsModel postsModel,PostsRouter postsRouter) {
         super(postsRouter);
         this.postsModel = postsModel;
         this.postsRouter = postsRouter;
+        postItemViewModels = PostsModel.getPostItemViewModelList(4);
     }
 
     @Bindable
@@ -42,12 +43,7 @@ public class PostsViewModel extends ViewPagerItemViewModel {
 
     @Bindable
     public int getItemLayoutId() {
-        return this.itemLayoutId;
-    }
-
-    public void setItemLayoutId(int itemLayoutId) {
-        this.itemLayoutId = itemLayoutId;
-        notifyPropertyChanged(BR.itemLayoutId);
+        return R.layout.rv_item_post;
     }
 
     @Bindable

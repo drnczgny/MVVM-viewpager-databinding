@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PostsModel {
 
-    private Post createTestPost(int id) {
+    private static Post createTestPost(int id) {
         Post post = new Post();
         post.setId(id);
         post.setUserId(id);
@@ -21,7 +21,7 @@ public class PostsModel {
         return post;
     }
 
-    public List<PostItemViewModel> getPostItemViewModelList(final int num) {
+    public static List<PostItemViewModel> getPostItemViewModelList(final int num) {
         List<PostItemViewModel> list = new ArrayList<>();
         for (int i = 1; i <= num; i++) {
             Post post = createTestPost(i);

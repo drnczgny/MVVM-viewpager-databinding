@@ -8,4 +8,6 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
  */
 
 public interface JsonPlaceholderRouter extends PostsRouter, CommentsRouter {
+
+
 }

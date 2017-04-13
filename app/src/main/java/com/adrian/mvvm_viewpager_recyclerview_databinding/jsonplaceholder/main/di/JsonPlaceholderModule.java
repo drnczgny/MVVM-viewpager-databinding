@@ -37,13 +37,13 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    CommentsRouter providesCommentsRouter(JsonPlaceholderRouter jsonPlaceholderRouter) {
+    CommentsRouter providesCommentsRouter() {
         return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    PostsRouter providesPostsRouter(JsonPlaceholderRouter jsonPlaceholderRouter) {
+    PostsRouter providesPostsRouter() {
         return this.jsonPlaceholderActivity;
     }
 
