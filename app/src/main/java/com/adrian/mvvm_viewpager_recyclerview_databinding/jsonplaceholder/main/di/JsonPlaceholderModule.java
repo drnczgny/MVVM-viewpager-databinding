@@ -1,7 +1,5 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di;
 
-import javax.inject.Named;
-
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.TestData;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
@@ -9,10 +7,13 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.J
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumsViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -56,8 +57,8 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel) {
-        return new TestData(postsViewModel, commentsViewModel);
+    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel, AlbumsViewModel albumsViewModel) {
+        return new TestData(postsViewModel, commentsViewModel, albumsViewModel);
     }
 
     @ActivityScope

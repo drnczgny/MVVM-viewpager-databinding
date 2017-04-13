@@ -1,6 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumsService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostsService;
 
@@ -29,5 +30,12 @@ public class JsonPlaceholderServiceModule {
     CommentsService providesCommentsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         CommentsService commentsService = retrofit.create(CommentsService.class);
         return commentsService;
+    }
+
+    @ActivityScope
+    @Provides
+    AlbumsService providesAlbumsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        AlbumsService albumsService = retrofit.create(AlbumsService.class);
+        return albumsService;
     }
 }

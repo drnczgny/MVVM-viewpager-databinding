@@ -27,5 +27,4 @@ public class CommentsModule {
     CommentsViewModel providesCommentsViewModel(CommentsModel commentsModel, CommentsRouter commentsRouter) {
         return new CommentsViewModel(commentsModel, commentsRouter);
     }
-
 }

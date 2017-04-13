@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutAlbumsBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutCommentsBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ViewpagerLayoutPostsBinding;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
 
 import java.util.List;
 
@@ -49,13 +49,8 @@ public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
             ViewpagerLayoutPostsBinding viewpagerLayoutPostsBinding = ViewpagerLayoutPostsBinding.inflate(layoutInflater, collection, false);
             viewpagerLayoutPostsBinding.rvPosts.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
-//            RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(TestData.getCommentItemViewModelList(), R.layout.rv_item_comment_layout, BR.viewModel);
-//            viewpagerItemCommentsLayoutBinding.rvComments.setAdapter(recyclerViewAdapter);
-
-//            viewpagerItemCommentsLayoutBinding.executePendingBindings();
-
-            viewpagerLayoutPostsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), (PostsViewModel)dataModel.getViewPagerItemViewModel());
-//            viewpagerLayoutPostsBinding.setHandler(((CommentsViewModel) dataModel.getViewPagerItemViewModel()).getCommentsHandler());
+            viewpagerLayoutPostsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
+            // viewpagerLayoutPostsBinding.setHandler(((CommentsViewModel) dataModel.getViewPagerItemViewModel()).getCommentsHandler());
             collection.addView(viewpagerLayoutPostsBinding.getRoot());
             return viewpagerLayoutPostsBinding.getRoot();
         }
@@ -64,41 +59,18 @@ public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
             ViewpagerLayoutCommentsBinding viewpagerLayoutCommentsBinding = ViewpagerLayoutCommentsBinding.inflate(layoutInflater, collection, false);
             viewpagerLayoutCommentsBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
-//            SimpleRecyclerViewAdapter simpleRecyclerViewAdapter = new SimpleRecyclerViewAdapter(context, Arrays.asList("one", "two", "three"));
-//            viewpagerLayoutCommentsBinding.recyclerView.setAdapter(simpleRecyclerViewAdapter);
-
             viewpagerLayoutCommentsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
             collection.addView(viewpagerLayoutCommentsBinding.getRoot());
             return viewpagerLayoutCommentsBinding.getRoot();
         }
+        if (position == 2) {
+            ViewpagerLayoutAlbumsBinding viewpagerLayoutAlbumsBinding = ViewpagerLayoutAlbumsBinding.inflate(layoutInflater, collection, false);
+            viewpagerLayoutAlbumsBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
-
-//        if(position == 3)  {
-//            ViewpagerItemCommentsLayoutBinding viewpagerItemCommentsLayoutBinding = ViewpagerItemCommentsLayoutBinding.inflate(layoutInflater, collection, false);
-//            viewpagerItemCommentsLayoutBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-//
-////            RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(TestData.getCommentItemViewModelList(), R.layout.rv_item_comment_layout, BR.viewModel);
-////            viewpagerItemCommentsLayoutBinding.rvComments.setAdapter(recyclerViewAdapter);
-//
-////            viewpagerItemCommentsLayoutBinding.executePendingBindings();
-//
-//            viewpagerItemCommentsLayoutBinding.setVariable(dataModel.getRvViewModel().getVariableId(), dataModel.getRvViewModel());
-//            viewpagerItemCommentsLayoutBinding.setHandler(((CommentsViewModel) dataModel.getRvViewModel()).getCommentsHandler());
-//            collection.addView(viewpagerItemCommentsLayoutBinding.getRoot());
-//            return viewpagerItemCommentsLayoutBinding.getRoot();
-//        }
-//
-//        if(position == 4)  {
-//            ViewpagerItemLayout5RecyclerviewBinding viewpagerItemLayout5RecyclerviewBinding = ViewpagerItemLayout5RecyclerviewBinding.inflate(layoutInflater, collection, false);
-//            viewpagerItemLayout5RecyclerviewBinding.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-//
-//            SimpleRecyclerViewAdapter simpleRecyclerViewAdapter = new SimpleRecyclerViewAdapter(context, Arrays.asList("one", "two", "three"));
-//            viewpagerItemLayout5RecyclerviewBinding.recyclerView.setAdapter(simpleRecyclerViewAdapter);
-//
-//            viewpagerItemLayout5RecyclerviewBinding.setVariable(dataModel.getRvViewModel().getVariableId(), dataModel.getRvViewModel());
-//            collection.addView(viewpagerItemLayout5RecyclerviewBinding.getRoot());
-//            return viewpagerItemLayout5RecyclerviewBinding.getRoot();
-//        }
+            viewpagerLayoutAlbumsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
+            collection.addView(viewpagerLayoutAlbumsBinding.getRoot());
+            return viewpagerLayoutAlbumsBinding.getRoot();
+        }
 
         binding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
         collection.addView(binding.getRoot());
@@ -124,6 +96,5 @@ public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
     public CharSequence getPageTitle(int position) {
         return titleList.get(position);
     }
-
 
 }

@@ -73,7 +73,6 @@ public class CommentsViewModel extends ViewPagerItemViewModel implements Comment
         return R.layout.viewpager_layout_comments;
     }
 
-
     @Bindable
     @Override
     public int getVariableId() {

@@ -24,7 +24,7 @@ public class PostsViewModel extends ViewPagerItemViewModel implements PostsModel
 
     private List<PostItemViewModel> postItemViewModels = new ArrayList<>();
 
-    public PostsViewModel(PostsModel postsModel,PostsRouter postsRouter) {
+    public PostsViewModel(PostsModel postsModel, PostsRouter postsRouter) {
         this.postsModel = postsModel;
         this.postsRouter = postsRouter;
 

@@ -22,7 +22,6 @@ public class PostsModule {
         return new PostsModel(postsService);
     }
 
-
     @ActivityScope
     @Provides
     PostsViewModel providesPostsViewModel(PostsModel postsModel, PostsRouter postsRouter) {
