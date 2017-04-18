@@ -35,13 +35,11 @@ public class TestData {
         String title2 = "Comments";
         String title3 = "Albums";
         String title4 = "Photos";
-        String title5 = "title5";
         List<String> list = new ArrayList<>();
         list.add(title1);
         list.add(title2);
         list.add(title3);
         list.add(title4);
-        //        list.add(title5);
         return list;
     }
 
