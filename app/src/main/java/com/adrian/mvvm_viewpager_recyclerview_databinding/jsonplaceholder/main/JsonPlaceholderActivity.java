@@ -21,9 +21,6 @@ public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceho
     @Inject
     JsonPlaceholderViewModel jsonPlaceholderViewModel;
 
-    @Inject
-    TestData testData;
-
     private ActivityJsonPlaceholderBinding binding;
 
     @Override

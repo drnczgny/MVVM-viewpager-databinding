@@ -27,7 +27,9 @@ public class PostListModel {
 
     private Observer<Post> postObserver;
 
-    private OnPostListCallback callback;
+    private OnPostListCallback onPostListCallback;
+
+    private OnPostCallback onPostCallback;
 
     public PostListModel(PostService postService) {
         this.postService = postService;
@@ -35,6 +37,36 @@ public class PostListModel {
         createPostListObserver();
         createPostObserver();
 
+    }
+
+    public void findAllPost() {
+        postService.findAllPost()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(postListObserver);
+    }
+
+    public void findPostById(final int id) {
+        postService.findPostById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(postObserver);
+    }
+
+    public void registerPostListCallback(OnPostListCallback callback) {
+        this.onPostListCallback = callback;
+    }
+
+    public void unRegisterPostListCallback() {
+        this.onPostListCallback = null;
+    }
+
+    public void registerPostCallback(OnPostCallback callback) {
+        this.onPostCallback = callback;
+    }
+
+    public void unRegisterPostCallback() {
+        this.onPostCallback = null;
     }
 
     private void createPostListObserver() {
@@ -48,14 +80,14 @@ public class PostListModel {
             public void onError(Throwable e) {
                 Log.i(TAG, "onError");
                 e.printStackTrace();
-                callback.onFindAllPostError(e);
+                onPostListCallback.onFindAllPostError(e);
             }
 
             @Override
             public void onNext(List<Post> posts) {
                 Log.i(TAG, "onNext");
                 Log.i(TAG, posts.toString());
-                callback.onFindAllPostSuccess(posts);
+                onPostListCallback.onFindAllPostSuccess(posts);
             }
         };
     }
@@ -71,36 +103,32 @@ public class PostListModel {
             public void onError(Throwable e) {
                 Log.i(TAG, "onError");
                 e.printStackTrace();
+                onPostCallback.onFindPostByIdError(e);
             }
 
             @Override
             public void onNext(Post post) {
                 Log.i(TAG, "onNext");
                 Log.i(TAG, post.toString());
+                onPostCallback.onFindPostByIdSuccess(post);
             }
         };
     }
 
-    public void findAllPost() {
-        postService.findAllPost()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(postListObserver);
-    }
-
-    public void registerCallback(OnPostListCallback callback) {
-        this.callback = callback;
-    }
-
-    public void unRegisterCallback() {
-        this.callback = null;
-    }
 
     public interface OnPostListCallback {
 
         void onFindAllPostSuccess(List<Post> posts);
 
         void onFindAllPostError(Throwable t);
+
+    }
+
+    public interface OnPostCallback {
+
+        void onFindPostByIdSuccess(Post post);
+
+        void onFindPostByIdError(Throwable t);
 
     }
 }

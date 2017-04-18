@@ -5,6 +5,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**
@@ -15,5 +16,8 @@ public interface PostService {
 
     @GET("/posts")
     Observable<List<Post>> findAllPost();
+
+    @GET("/posts/{id}")
+    Observable<Post> findPostById(@Path("id") int id);
 
 }

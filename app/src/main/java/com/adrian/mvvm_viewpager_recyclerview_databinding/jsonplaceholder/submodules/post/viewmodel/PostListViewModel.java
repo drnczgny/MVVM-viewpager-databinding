@@ -28,7 +28,7 @@ public class PostListViewModel extends ViewPagerItemViewModel implements PostLis
         this.postListRouter = postListRouter;
         this.postListModel = postListModel;
 
-        postListModel.registerCallback(this);
+        postListModel.registerPostListCallback(this);
         postListModel.findAllPost();
     }
 
