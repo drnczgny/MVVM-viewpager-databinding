@@ -1,10 +1,10 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumsViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotosViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotoListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +15,18 @@ import java.util.List;
 
 public class TestData {
 
-    private PostsViewModel postsViewModel;
+    private PostListViewModel postsViewModel;
 
-    private CommentsViewModel commentsViewModel;
+    private CommentListViewModel commentListViewModel;
 
-    private AlbumsViewModel albumsViewModel;
+    private AlbumListViewModel albumListViewModel;
 
-    private PhotosViewModel photosViewModel;
+    private PhotoListViewModel photosViewModel;
 
-    public TestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel, AlbumsViewModel albumsViewModel, PhotosViewModel photosViewModel) {
+    public TestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
         this.postsViewModel = postsViewModel;
-        this.commentsViewModel = commentsViewModel;
-        this.albumsViewModel = albumsViewModel;
+        this.commentListViewModel = commentListViewModel;
+        this.albumListViewModel = albumListViewModel;
         this.photosViewModel = photosViewModel;
     }
 
@@ -48,8 +48,8 @@ public class TestData {
     public final List<DataModel> getViewPagerDataModel() {
         List<DataModel> list = new ArrayList<>();
         DataModel dataModel1 = new DataModel(postsViewModel);
-        DataModel dataModel2 = new DataModel(commentsViewModel);
-        DataModel dataModel3 = new DataModel(albumsViewModel);
+        DataModel dataModel2 = new DataModel(commentListViewModel);
+        DataModel dataModel3 = new DataModel(albumListViewModel);
         DataModel dataModel4 = new DataModel(photosViewModel);
         list.add(dataModel1);
         list.add(dataModel2);

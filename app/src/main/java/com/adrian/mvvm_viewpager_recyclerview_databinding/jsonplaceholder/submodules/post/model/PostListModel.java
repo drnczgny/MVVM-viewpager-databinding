@@ -7,7 +7,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submo
 import android.util.Log;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.domain.Post;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostsService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostService;
 
 import java.util.List;
 
@@ -17,20 +17,20 @@ import rx.schedulers.Schedulers;
 
 
 
-public class PostsModel {
+public class PostListModel {
 
-    private static final String TAG = PostsModel.class.getName();
+    private static final String TAG = PostListModel.class.getName();
 
-    private final PostsService postsService;
+    private final PostService postService;
 
     private Observer<List<Post>> postListObserver;
 
     private Observer<Post> postObserver;
 
-    private OnPostsCallback callback;
+    private OnPostListCallback callback;
 
-    public PostsModel(PostsService postsService) {
-        this.postsService = postsService;
+    public PostListModel(PostService postService) {
+        this.postService = postService;
 
         createPostListObserver();
         createPostObserver();
@@ -82,13 +82,13 @@ public class PostsModel {
     }
 
     public void findAllPost() {
-        postsService.findAllPost()
+        postService.findAllPost()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(postListObserver);
     }
 
-    public void registerCallback(OnPostsCallback callback) {
+    public void registerCallback(OnPostListCallback callback) {
         this.callback = callback;
     }
 
@@ -96,7 +96,7 @@ public class PostsModel {
         this.callback = null;
     }
 
-    public interface OnPostsCallback {
+    public interface OnPostListCallback {
 
         void onFindAllPostSuccess(List<Post> posts);
 
@@ -105,25 +105,3 @@ public class PostsModel {
     }
 }
 
-//public class PostsModel {
-//
-//    private static Post createTestPost(int id) {
-//        Post post = new Post();
-//        post.setId(id);
-//        post.setUserId(id);
-//        post.setTitle("title" + id);
-//        post.setBody("body" + id);
-//        return post;
-//    }
-//
-//    public static List<PostItemViewModel> getPostItemViewModelList(final int num) {
-//        List<PostItemViewModel> list = new ArrayList<>();
-//        for (int i = 1; i <= num; i++) {
-//            Post post = createTestPost(i);
-//            PostItemViewModel postItemViewModel = new PostItemViewModel(post);
-//            list.add(postItemViewModel);
-//        }
-//        return list;
-//    }
-//
-//}

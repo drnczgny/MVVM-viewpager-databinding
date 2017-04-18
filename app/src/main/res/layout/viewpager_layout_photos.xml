@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotosViewModel"/>
+            type="com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotoListViewModel"/>
     </data>
 
     <LinearLayout

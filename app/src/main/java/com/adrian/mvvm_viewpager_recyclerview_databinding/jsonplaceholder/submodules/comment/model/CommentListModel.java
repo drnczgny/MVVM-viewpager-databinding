@@ -3,7 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submo
 import android.util.Log;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentService;
 
 import java.util.List;
 
@@ -15,20 +15,20 @@ import rx.schedulers.Schedulers;
  * Created by cadri on 2017. 04. 11..
  */
 
-public class CommentsModel {
+public class CommentListModel {
 
-    private static final String TAG = CommentsModel.class.getName();
+    private static final String TAG = CommentListModel.class.getName();
 
-    private final CommentsService commentsService;
+    private final CommentService commentService;
 
     private Observer<List<Comment>> commentListObserver;
 
     private Observer<Comment> commentObserver;
 
-    private OnCommentCallback callback;
+    private OnCommentListCallback callback;
 
-    public CommentsModel(CommentsService commentsService) {
-        this.commentsService = commentsService;
+    public CommentListModel(CommentService commentService) {
+        this.commentService = commentService;
 
         createCommentListObserver();
         createCommentObserver();
@@ -80,13 +80,13 @@ public class CommentsModel {
     }
 
     public void findAllComment() {
-        commentsService.findAllComment()
+        commentService.findAllComment()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(commentListObserver);
     }
 
-    public void registerCallback(OnCommentCallback callback) {
+    public void registerCallback(OnCommentListCallback callback) {
         this.callback = callback;
     }
 
@@ -94,7 +94,7 @@ public class CommentsModel {
         this.callback = null;
     }
 
-    public interface OnCommentCallback {
+    public interface OnCommentListCallback {
 
         void onFindAllCommentSuccess(List<Comment> comments);
 

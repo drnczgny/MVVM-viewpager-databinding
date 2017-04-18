@@ -11,7 +11,7 @@ import rx.Observable;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public interface PhotosService {
+public interface PhotoService {
 
     @GET("/photos")
     Observable<List<Photo>> findAllPhoto();

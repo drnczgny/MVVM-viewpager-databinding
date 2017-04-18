@@ -51,7 +51,7 @@ public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
             viewpagerLayoutPostsBinding.rvPosts.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
             viewpagerLayoutPostsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
-            // viewpagerLayoutPostsBinding.setHandler(((CommentsViewModel) dataModel.getViewPagerItemViewModel()).getCommentsHandler());
+            // viewpagerLayoutPostsBinding.setHandler(((CommentListViewModel) dataModel.getViewPagerItemViewModel()).getCommentsHandler());
             collection.addView(viewpagerLayoutPostsBinding.getRoot());
             return viewpagerLayoutPostsBinding.getRoot();
         }

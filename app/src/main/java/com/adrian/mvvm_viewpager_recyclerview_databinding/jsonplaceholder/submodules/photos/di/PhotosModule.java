@@ -1,10 +1,10 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotosModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotosRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotosService;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotosViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotoListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotoListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotoService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotoListViewModel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,14 +18,14 @@ public class PhotosModule {
 
     @ActivityScope
     @Provides
-    PhotosModel providesPhotosModule(PhotosService photosService) {
-        return new PhotosModel(photosService);
+    PhotoListModel providesPhotosModule(PhotoService photoService) {
+        return new PhotoListModel(photoService);
     }
 
     @ActivityScope
     @Provides
-    PhotosViewModel providesPhotosViewModel(PhotosRouter photosRouter, PhotosModel photosModel) {
-        return new PhotosViewModel(photosRouter, photosModel);
+    PhotoListViewModel providesPhotosViewModel(PhotoListRouter photoListRouter, PhotoListModel photoListModel) {
+        return new PhotoListViewModel(photoListRouter, photoListModel);
     }
 
 }

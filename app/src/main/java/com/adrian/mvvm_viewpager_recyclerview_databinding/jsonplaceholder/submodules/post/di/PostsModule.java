@@ -1,10 +1,10 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostsService;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,13 +18,13 @@ public class PostsModule {
 
     @ActivityScope
     @Provides
-    PostsModel providesPostsModel(PostsService postsService) {
-        return new PostsModel(postsService);
+    PostListModel providesPostsModel(PostService postService) {
+        return new PostListModel(postService);
     }
 
     @ActivityScope
     @Provides
-    PostsViewModel providesPostsViewModel(PostsRouter postsRouter, PostsModel postsModel) {
-        return new PostsViewModel(postsRouter, postsModel);
+    PostListViewModel providesPostsViewModel(PostListRouter postListRouter, PostListModel postListModel) {
+        return new PostListViewModel(postListRouter, postListModel);
     }
 }

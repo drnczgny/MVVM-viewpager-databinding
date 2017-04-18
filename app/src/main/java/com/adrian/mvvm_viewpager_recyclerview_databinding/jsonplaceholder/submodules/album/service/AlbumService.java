@@ -11,7 +11,7 @@ import rx.Observable;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public interface AlbumsService {
+public interface AlbumService {
 
     @GET("/albums")
     Observable<List<Album>> findAllAlbum();

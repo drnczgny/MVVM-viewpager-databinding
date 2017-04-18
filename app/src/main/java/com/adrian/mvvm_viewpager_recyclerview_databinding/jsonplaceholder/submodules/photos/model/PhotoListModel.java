@@ -3,7 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submo
 import android.util.Log;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.domain.Photo;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotosService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotoService;
 
 import java.util.List;
 
@@ -15,20 +15,20 @@ import rx.schedulers.Schedulers;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class PhotosModel {
+public class PhotoListModel {
 
-    private static final String TAG = PhotosModel.class.getName();
+    private static final String TAG = PhotoListModel.class.getName();
 
-    private final PhotosService photosService;
+    private final PhotoService photoService;
 
     private Observer<List<Photo>> photoListObserver;
 
     private Observer<Photo> photoObserver;
 
-    private OnPhotosCallback callback;
+    private OnPhotoListCallback callback;
 
-    public PhotosModel(PhotosService photosService) {
-        this.photosService = photosService;
+    public PhotoListModel(PhotoService photoService) {
+        this.photoService = photoService;
 
         createPhotoListObserver();
         createPhotoObserver();
@@ -80,13 +80,13 @@ public class PhotosModel {
     }
 
     public void findAllPhoto() {
-        photosService.findAllPhoto()
+        photoService.findAllPhoto()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(photoListObserver);
     }
 
-    public void registerCallback(OnPhotosCallback callback) {
+    public void registerCallback(OnPhotoListCallback callback) {
         this.callback = callback;
     }
 
@@ -94,7 +94,7 @@ public class PhotosModel {
         this.callback = null;
     }
 
-    public interface OnPhotosCallback {
+    public interface OnPhotoListCallback {
 
         void onFindAllPhotoSuccess(List<Photo> photos);
 

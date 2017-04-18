@@ -1,10 +1,10 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumsService;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotosService;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostsService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.service.PhotoService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostService;
 
 import javax.inject.Named;
 
@@ -21,29 +21,29 @@ public class JsonPlaceholderServiceModule {
 
     @ActivityScope
     @Provides
-    PostsService providesPostsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
-        PostsService postsService = retrofit.create(PostsService.class);
-        return postsService;
+    PostService providesPostsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        PostService postService = retrofit.create(PostService.class);
+        return postService;
     }
 
     @ActivityScope
     @Provides
-    CommentsService providesCommentsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
-        CommentsService commentsService = retrofit.create(CommentsService.class);
-        return commentsService;
+    CommentService providesCommentsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        CommentService commentService = retrofit.create(CommentService.class);
+        return commentService;
     }
 
     @ActivityScope
     @Provides
-    AlbumsService providesAlbumsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
-        AlbumsService albumsService = retrofit.create(AlbumsService.class);
-        return albumsService;
+    AlbumService providesAlbumsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        AlbumService albumService = retrofit.create(AlbumService.class);
+        return albumService;
     }
 
     @ActivityScope
     @Provides
-    PhotosService providesPhotosService(@Named("jsonplaceholderapi") Retrofit retrofit) {
-        PhotosService photosService = retrofit.create(PhotosService.class);
-        return photosService;
+    PhotoService providesPhotosService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        PhotoService photoService = retrofit.create(PhotoService.class);
+        return photoService;
     }
 }

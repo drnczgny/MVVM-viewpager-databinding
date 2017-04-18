@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel"/>
+            type="com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentListViewModel"/>
     </data>
 
     <LinearLayout

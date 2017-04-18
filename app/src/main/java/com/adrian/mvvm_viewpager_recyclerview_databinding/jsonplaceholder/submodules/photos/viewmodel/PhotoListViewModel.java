@@ -7,8 +7,8 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.domain.Photo;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotosModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotosRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotoListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotoListRouter;
 
 import android.databinding.Bindable;
 
@@ -16,22 +16,22 @@ import android.databinding.Bindable;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class PhotosViewModel extends ViewPagerItemViewModel implements PhotosModel.OnPhotosCallback {
+public class PhotoListViewModel extends ViewPagerItemViewModel implements PhotoListModel.OnPhotoListCallback {
 
-    private static final String TAG = PhotosViewModel.class.getName();
+    private static final String TAG = PhotoListViewModel.class.getName();
 
     private List<PhotoItemViewModel> photoItemViewModels;
 
-    private PhotosRouter photosRouter;
+    private PhotoListRouter photoListRouter;
 
-    private PhotosModel photosModel;
+    private PhotoListModel photoListModel;
 
-    public PhotosViewModel(PhotosRouter photosRouter, PhotosModel photosModel) {
-        this.photosRouter = photosRouter;
-        this.photosModel = photosModel;
+    public PhotoListViewModel(PhotoListRouter photoListRouter, PhotoListModel photoListModel) {
+        this.photoListRouter = photoListRouter;
+        this.photoListModel = photoListModel;
 
-        photosModel.registerCallback(this);
-        photosModel.findAllPhoto();
+        photoListModel.registerCallback(this);
+        photoListModel.findAllPhoto();
 
     }
 

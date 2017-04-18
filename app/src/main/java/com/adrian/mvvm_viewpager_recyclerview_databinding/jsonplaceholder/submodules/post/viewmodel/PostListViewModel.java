@@ -6,8 +6,8 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.domain.Post;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostsModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +16,20 @@ import java.util.List;
  * Created by cadri on 2017. 04. 09..
  */
 
-public class PostsViewModel extends ViewPagerItemViewModel implements PostsModel.OnPostsCallback {
+public class PostListViewModel extends ViewPagerItemViewModel implements PostListModel.OnPostListCallback {
 
-    private PostsRouter postsRouter;
+    private PostListRouter postListRouter;
 
-    private PostsModel postsModel;
+    private PostListModel postListModel;
 
     private List<PostItemViewModel> postItemViewModels = new ArrayList<>();
 
-    public PostsViewModel(PostsRouter postsRouter, PostsModel postsModel) {
-        this.postsRouter = postsRouter;
-        this.postsModel = postsModel;
+    public PostListViewModel(PostListRouter postListRouter, PostListModel postListModel) {
+        this.postListRouter = postListRouter;
+        this.postListModel = postListModel;
 
-        postsModel.registerCallback(this);
-        postsModel.findAllPost();
+        postListModel.registerCallback(this);
+        postListModel.findAllPost();
     }
 
     @Override

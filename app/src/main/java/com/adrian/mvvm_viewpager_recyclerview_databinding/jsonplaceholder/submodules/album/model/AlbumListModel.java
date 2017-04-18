@@ -3,7 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submo
 import android.util.Log;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.domain.Album;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumsService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumService;
 
 import java.util.List;
 
@@ -15,20 +15,20 @@ import rx.schedulers.Schedulers;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class AlbumsModel  {
+public class AlbumListModel {
 
-    private static final String TAG = AlbumsModel.class.getName();
+    private static final String TAG = AlbumListModel.class.getName();
 
-    private final AlbumsService albumsService;
+    private final AlbumService albumService;
 
     private Observer<List<Album>> albumListObserver;
 
     private Observer<Album> albumObserver;
 
-    private OnAlbumCallback callback;
+    private OnAlbumListCallback callback;
 
-    public AlbumsModel(AlbumsService albumsService) {
-        this.albumsService = albumsService;
+    public AlbumListModel(AlbumService albumService) {
+        this.albumService = albumService;
 
         createAlbumListObserver();
         createAlbumObserver();
@@ -80,13 +80,13 @@ public class AlbumsModel  {
     }
 
     public void findAllAlbum() {
-        albumsService.findAllAlbum()
+        albumService.findAllAlbum()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(albumListObserver);
     }
 
-    public void registerCallback(OnAlbumCallback callback) {
+    public void registerCallback(OnAlbumListCallback callback) {
         this.callback = callback;
     }
 
@@ -94,7 +94,7 @@ public class AlbumsModel  {
         this.callback = null;
     }
 
-    public interface OnAlbumCallback {
+    public interface OnAlbumListCallback {
 
         void onFindAllAlbumSuccess(List<Album> albums);
 

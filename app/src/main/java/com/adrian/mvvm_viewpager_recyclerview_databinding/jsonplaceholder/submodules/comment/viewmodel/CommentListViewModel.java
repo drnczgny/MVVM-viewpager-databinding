@@ -6,32 +6,30 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentsModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentListRouter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.adrian.mvvm_viewpager_recyclerview_databinding.R.layout.rv_item_comment;
 
 /**
  * Created by cadri on 2017. 04. 09..
  */
 
-public class CommentsViewModel extends ViewPagerItemViewModel implements CommentsModel.OnCommentCallback {
+public class CommentListViewModel extends ViewPagerItemViewModel implements CommentListModel.OnCommentListCallback {
 
-    private CommentsRouter commentsRouter;
+    private CommentListRouter commentListRouter;
 
-    private CommentsModel commentsModel;
+    private CommentListModel commentListModel;
 
     private List<CommentItemViewModel> commentItemViewModels = new ArrayList<>();
 
-    public CommentsViewModel(CommentsRouter commentsRouter, CommentsModel commentsModel) {
-        this.commentsRouter = commentsRouter;
-        this.commentsModel = commentsModel;
+    public CommentListViewModel(CommentListRouter commentListRouter, CommentListModel commentListModel) {
+        this.commentListRouter = commentListRouter;
+        this.commentListModel = commentListModel;
 
-        commentsModel.registerCallback(this);
-        commentsModel.findAllComment();
+        commentListModel.registerCallback(this);
+        commentListModel.findAllComment();
     }
 
     @Override

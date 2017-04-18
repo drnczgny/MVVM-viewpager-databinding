@@ -6,14 +6,14 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumsViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotosRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotosViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotoListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotoListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel;
 
 import javax.inject.Named;
 
@@ -41,32 +41,32 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    PostsRouter providesPostsRouter() {
+    PostListRouter providesPostsRouter() {
         return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    CommentsRouter providesCommentsRouter() {
+    CommentListRouter providesCommentsRouter() {
         return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    AlbumsRouter providesAlbumsRouter() {
+    AlbumListRouter providesAlbumsRouter() {
         return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    PhotosRouter providesPhotoRouter() {
+    PhotoListRouter providesPhotoRouter() {
         return this.jsonPlaceholderActivity;
     }
 
     @ActivityScope
     @Provides
-    TestData providesTestData(PostsViewModel postsViewModel, CommentsViewModel commentsViewModel, AlbumsViewModel albumsViewModel, PhotosViewModel photosViewModel) {
-        return new TestData(postsViewModel, commentsViewModel, albumsViewModel, photosViewModel);
+    TestData providesTestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
+        return new TestData(postsViewModel, commentListViewModel, albumListViewModel, photosViewModel);
     }
 
     @ActivityScope
@@ -78,15 +78,15 @@ public class JsonPlaceholderModule {
     @ActivityScope
     @Provides
     @Named("postsDataModel")
-    DataModel providesPostsDataModel(PostsViewModel postsViewModel) {
+    DataModel providesPostsDataModel(PostListViewModel postsViewModel) {
         return new DataModel(postsViewModel);
     }
 
     @ActivityScope
     @Provides
     @Named("commentsDataModel")
-    DataModel providesCommentsDataModel(CommentsViewModel commentsViewModel) {
-        return new DataModel(commentsViewModel);
+    DataModel providesCommentsDataModel(CommentListViewModel commentListViewModel) {
+        return new DataModel(commentListViewModel);
     }
 
 

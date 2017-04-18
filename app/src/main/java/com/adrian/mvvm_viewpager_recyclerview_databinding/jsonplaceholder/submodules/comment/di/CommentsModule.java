@@ -1,10 +1,10 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentsModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentsRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentsService;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentsViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentListRouter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentService;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentListViewModel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,13 +18,13 @@ public class CommentsModule {
 
     @ActivityScope
     @Provides
-    CommentsModel providesCommentsModel(CommentsService commentsService) {
-        return new CommentsModel(commentsService);
+    CommentListModel providesCommentsModel(CommentService commentService) {
+        return new CommentListModel(commentService);
     }
 
     @ActivityScope
     @Provides
-    CommentsViewModel providesCommentsViewModel(CommentsRouter commentsRouter, CommentsModel commentsModel) {
-        return new CommentsViewModel(commentsRouter, commentsModel);
+    CommentListViewModel providesCommentsViewModel(CommentListRouter commentListRouter, CommentListModel commentListModel) {
+        return new CommentListViewModel(commentListRouter, commentListModel);
     }
 }
