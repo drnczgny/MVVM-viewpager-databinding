@@ -15,11 +15,9 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+public class PostModel {
 
-
-public class PostListModel {
-
-    private static final String TAG = PostListModel.class.getName();
+    private static final String TAG = PostModel.class.getName();
 
     private final PostService postService;
 
@@ -31,7 +29,7 @@ public class PostListModel {
 
     private OnPostCallback onPostCallback;
 
-    public PostListModel(PostService postService) {
+    public PostModel(PostService postService) {
         this.postService = postService;
 
         createPostListObserver();
@@ -115,7 +113,6 @@ public class PostListModel {
         };
     }
 
-
     public interface OnPostListCallback {
 
         void onFindAllPostSuccess(List<Post> posts);
@@ -132,4 +129,3 @@ public class PostListModel {
 
     }
 }
-

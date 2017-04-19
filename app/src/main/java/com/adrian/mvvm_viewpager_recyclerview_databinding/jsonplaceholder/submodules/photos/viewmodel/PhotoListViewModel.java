@@ -7,7 +7,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.domain.Photo;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotoListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotoModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotoListRouter;
 
 import android.databinding.Bindable;
@@ -16,7 +16,7 @@ import android.databinding.Bindable;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class PhotoListViewModel extends ViewPagerItemViewModel implements PhotoListModel.OnPhotoListCallback {
+public class PhotoListViewModel extends ViewPagerItemViewModel implements PhotoModel.OnPhotoListCallback {
 
     private static final String TAG = PhotoListViewModel.class.getName();
 
@@ -24,14 +24,14 @@ public class PhotoListViewModel extends ViewPagerItemViewModel implements PhotoL
 
     private PhotoListRouter photoListRouter;
 
-    private PhotoListModel photoListModel;
+    private PhotoModel photoModel;
 
-    public PhotoListViewModel(PhotoListRouter photoListRouter, PhotoListModel photoListModel) {
+    public PhotoListViewModel(PhotoListRouter photoListRouter, PhotoModel photoModel) {
         this.photoListRouter = photoListRouter;
-        this.photoListModel = photoListModel;
+        this.photoModel = photoModel;
 
-        photoListModel.registerCallback(this);
-        photoListModel.findAllPhoto();
+        photoModel.registerCallback(this);
+        photoModel.findAllPhoto();
 
     }
 

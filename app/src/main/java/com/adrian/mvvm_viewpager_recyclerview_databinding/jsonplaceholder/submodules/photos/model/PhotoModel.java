@@ -15,9 +15,9 @@ import rx.schedulers.Schedulers;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class PhotoListModel {
+public class PhotoModel {
 
-    private static final String TAG = PhotoListModel.class.getName();
+    private static final String TAG = PhotoModel.class.getName();
 
     private final PhotoService photoService;
 
@@ -27,7 +27,7 @@ public class PhotoListModel {
 
     private OnPhotoListCallback callback;
 
-    public PhotoListModel(PhotoService photoService) {
+    public PhotoModel(PhotoService photoService) {
         this.photoService = photoService;
 
         createPhotoListObserver();

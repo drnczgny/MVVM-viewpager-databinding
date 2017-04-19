@@ -8,7 +8,7 @@ import java.util.List;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.domain.Album;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.model.AlbumListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.model.AlbumModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumListRouter;
 import com.android.databinding.library.baseAdapters.BR;
 
@@ -16,20 +16,20 @@ import com.android.databinding.library.baseAdapters.BR;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class AlbumListViewModel extends ViewPagerItemViewModel implements AlbumListModel.OnAlbumListCallback {
+public class AlbumListViewModel extends ViewPagerItemViewModel implements AlbumModel.OnAlbumListCallback {
 
     private AlbumListRouter albumListRouter;
 
-    private AlbumListModel albumListModel;
+    private AlbumModel albumModel;
 
     private List<AlbumItemViewModel> albumItemViewModels = new ArrayList<>();
 
-    public AlbumListViewModel(AlbumListRouter albumListRouter, AlbumListModel albumListModel) {
+    public AlbumListViewModel(AlbumListRouter albumListRouter, AlbumModel albumModel) {
         this.albumListRouter = albumListRouter;
-        this.albumListModel = albumListModel;
+        this.albumModel = albumModel;
 
-        albumListModel.registerCallback(this);
-        albumListModel.findAllAlbum();
+        albumModel.registerCallback(this);
+        albumModel.findAllAlbum();
     }
 
     public int getItemLayoutId() {

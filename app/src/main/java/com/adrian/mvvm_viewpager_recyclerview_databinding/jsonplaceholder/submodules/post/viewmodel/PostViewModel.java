@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostRouter;
 
 /**
@@ -12,7 +12,7 @@ public class PostViewModel extends BaseViewModel {
 
     private PostRouter postRouter;
 
-    private PostListModel postListModel;
+    private PostModel postModel;
 
     public PostViewModel(PostRouter postRouter) {
         this.postRouter = postRouter;

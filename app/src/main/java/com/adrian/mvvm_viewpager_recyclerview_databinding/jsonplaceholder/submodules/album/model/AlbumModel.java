@@ -15,9 +15,9 @@ import rx.schedulers.Schedulers;
  * Created by Adrian_Czigany on 4/13/2017.
  */
 
-public class AlbumListModel {
+public class AlbumModel {
 
-    private static final String TAG = AlbumListModel.class.getName();
+    private static final String TAG = AlbumModel.class.getName();
 
     private final AlbumService albumService;
 
@@ -27,7 +27,7 @@ public class AlbumListModel {
 
     private OnAlbumListCallback callback;
 
-    public AlbumListModel(AlbumService albumService) {
+    public AlbumModel(AlbumService albumService) {
         this.albumService = albumService;
 
         createAlbumListObserver();

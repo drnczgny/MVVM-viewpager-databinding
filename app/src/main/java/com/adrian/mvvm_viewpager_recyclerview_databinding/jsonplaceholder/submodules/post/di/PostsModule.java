@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel;
@@ -18,13 +18,13 @@ public class PostsModule {
 
     @ActivityScope
     @Provides
-    PostListModel providesPostsModel(PostService postService) {
-        return new PostListModel(postService);
+    PostModel providesPostModel(PostService postService) {
+        return new PostModel(postService);
     }
 
     @ActivityScope
     @Provides
-    PostListViewModel providesPostsViewModel(PostListRouter postListRouter, PostListModel postListModel) {
-        return new PostListViewModel(postListRouter, postListModel);
+    PostListViewModel providesPostsViewModel(PostListRouter postListRouter, PostModel postModel) {
+        return new PostListViewModel(postListRouter, postModel);
     }
 }

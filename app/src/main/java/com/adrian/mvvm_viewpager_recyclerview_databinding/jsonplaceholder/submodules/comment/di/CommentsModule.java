@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.service.CommentService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.viewmodel.CommentListViewModel;
@@ -18,13 +18,13 @@ public class CommentsModule {
 
     @ActivityScope
     @Provides
-    CommentListModel providesCommentsModel(CommentService commentService) {
-        return new CommentListModel(commentService);
+    CommentModel providesCommentModel(CommentService commentService) {
+        return new CommentModel(commentService);
     }
 
     @ActivityScope
     @Provides
-    CommentListViewModel providesCommentsViewModel(CommentListRouter commentListRouter, CommentListModel commentListModel) {
-        return new CommentListViewModel(commentListRouter, commentListModel);
+    CommentListViewModel providesCommentsViewModel(CommentListRouter commentListRouter, CommentModel commentModel) {
+        return new CommentListViewModel(commentListRouter, commentModel);
     }
 }

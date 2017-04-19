@@ -6,7 +6,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.domain.Comment;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.model.CommentModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentListRouter;
 
 import java.util.ArrayList;
@@ -16,20 +16,20 @@ import java.util.List;
  * Created by cadri on 2017. 04. 09..
  */
 
-public class CommentListViewModel extends ViewPagerItemViewModel implements CommentListModel.OnCommentListCallback {
+public class CommentListViewModel extends ViewPagerItemViewModel implements CommentModel.OnCommentListCallback {
 
     private CommentListRouter commentListRouter;
 
-    private CommentListModel commentListModel;
+    private CommentModel commentModel;
 
     private List<CommentItemViewModel> commentItemViewModels = new ArrayList<>();
 
-    public CommentListViewModel(CommentListRouter commentListRouter, CommentListModel commentListModel) {
+    public CommentListViewModel(CommentListRouter commentListRouter, CommentModel commentModel) {
         this.commentListRouter = commentListRouter;
-        this.commentListModel = commentListModel;
+        this.commentModel = commentModel;
 
-        commentListModel.registerCallback(this);
-        commentListModel.findAllComment();
+        commentModel.registerCallback(this);
+        commentModel.findAllComment();
     }
 
     @Override

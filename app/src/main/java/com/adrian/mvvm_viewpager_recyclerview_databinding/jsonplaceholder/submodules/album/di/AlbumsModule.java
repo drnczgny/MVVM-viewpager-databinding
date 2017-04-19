@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.model.AlbumListModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.model.AlbumModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.service.AlbumService;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.viewmodel.AlbumListViewModel;
@@ -18,13 +18,13 @@ public class AlbumsModule {
 
     @ActivityScope
     @Provides
-    AlbumListModel providesAlbumsModel(AlbumService albumService) {
-        return new AlbumListModel(albumService);
+    AlbumModel providesAlbumModel(AlbumService albumService) {
+        return new AlbumModel(albumService);
     }
 
     @ActivityScope
     @Provides
-    AlbumListViewModel providesAlbumsViewModel(AlbumListRouter albumListRouter, AlbumListModel albumListModel) {
-        return new AlbumListViewModel(albumListRouter, albumListModel);
+    AlbumListViewModel providesAlbumsViewModel(AlbumListRouter albumListRouter, AlbumModel albumModel) {
+        return new AlbumListViewModel(albumListRouter, albumModel);
     }
 }

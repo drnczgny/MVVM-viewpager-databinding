@@ -15,9 +15,9 @@ import rx.schedulers.Schedulers;
  * Created by cadri on 2017. 04. 11..
  */
 
-public class CommentListModel {
+public class CommentModel {
 
-    private static final String TAG = CommentListModel.class.getName();
+    private static final String TAG = CommentModel.class.getName();
 
     private final CommentService commentService;
 
@@ -27,7 +27,7 @@ public class CommentListModel {
 
     private OnCommentListCallback callback;
 
-    public CommentListModel(CommentService commentService) {
+    public CommentModel(CommentService commentService) {
         this.commentService = commentService;
 
         createCommentListObserver();
