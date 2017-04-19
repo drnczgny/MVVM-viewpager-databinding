@@ -2,7 +2,6 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderViewModel;
@@ -14,8 +13,6 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotoListViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel;
-
-import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -75,19 +72,19 @@ public class JsonPlaceholderModule {
         return new JsonPlaceholderViewModel(jsonPlaceholderRouter, viewPagerModel);
     }
 
-    @ActivityScope
-    @Provides
-    @Named("postsDataModel")
-    DataModel providesPostsDataModel(PostListViewModel postsViewModel) {
-        return new DataModel(postsViewModel);
-    }
-
-    @ActivityScope
-    @Provides
-    @Named("commentsDataModel")
-    DataModel providesCommentsDataModel(CommentListViewModel commentListViewModel) {
-        return new DataModel(commentListViewModel);
-    }
+//    @ActivityScope
+//    @Provides
+//    @Named("postsDataModel")
+//    DataModel providesPostsDataModel(PostListViewModel postsViewModel) {
+//        return new DataModel(postsViewModel);
+//    }
+//
+//    @ActivityScope
+//    @Provides
+//    @Named("commentsDataModel")
+//    DataModel providesCommentsDataModel(CommentListViewModel commentListViewModel) {
+//        return new DataModel(commentListViewModel);
+//    }
 
 
 }

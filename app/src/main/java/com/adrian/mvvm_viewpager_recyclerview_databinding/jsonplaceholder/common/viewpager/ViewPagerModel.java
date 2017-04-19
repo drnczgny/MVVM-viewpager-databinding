@@ -31,28 +31,20 @@ public class ViewPagerModel {
     }
 
     public final List<String> getTitleList() {
-        String title1 = "Posts";
-        String title2 = "Comments";
-        String title3 = "Albums";
-        String title4 = "Photos";
         List<String> list = new ArrayList<>();
-        list.add(title1);
-        list.add(title2);
-        list.add(title3);
-        list.add(title4);
+        list.add("Posts");
+        list.add("Comments");
+        list.add("Albums");
+        list.add("Photos");
         return list;
     }
 
     public final List<DataModel> getViewPagerDataModel() {
         List<DataModel> list = new ArrayList<>();
-        DataModel dataModel1 = new DataModel(postsViewModel);
-        DataModel dataModel2 = new DataModel(commentListViewModel);
-        DataModel dataModel3 = new DataModel(albumListViewModel);
-        DataModel dataModel4 = new DataModel(photosViewModel);
-        list.add(dataModel1);
-        list.add(dataModel2);
-        list.add(dataModel3);
-        list.add(dataModel4);
+        list.add(new DataModel(postsViewModel));
+        list.add(new DataModel(commentListViewModel));
+        list.add(new DataModel(albumListViewModel));
+        list.add(new DataModel(photosViewModel));
         return list;
     }
 
