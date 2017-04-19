@@ -11,8 +11,8 @@ import dagger.Component;
  */
 
 @ActivityScope
-@Component(dependencies = AppComponent.class, modules = {PostModule.class})
-public interface PostComponent {
+@Component(dependencies = AppComponent.class, modules = {PostActivityModule.class})
+public interface PostActivityComponent {
 
     void inject(PostActivity postActivity);
 
@@ -20,10 +20,10 @@ public interface PostComponent {
         private Injector() {
         }
 
-        public static PostComponent buildComponent(PostActivity activity) {
-            return DaggerPostComponent.builder()
+        public static PostActivityComponent buildComponent(PostActivity activity) {
+            return DaggerPostActivityComponent.builder()
                     .appComponent(AppComponent.Injector.getComponent())
-                    .postModule(new PostModule(activity))
+                    .postActivityModule(new PostActivityModule(activity))
                     .build();
         }
     }

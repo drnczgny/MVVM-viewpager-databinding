@@ -1,35 +1,33 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostRouter;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.view.PostActivity;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.service.PostService;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
 
 /**
- * Created by Adrian_Czigany on 4/18/2017.
+ * Created by cadri on 2017. 04. 09..
  */
 
 @Module
 public class PostModule {
 
-    private PostActivity postActivity;
-
-    public PostModule(PostActivity postActivity) {
-        this.postActivity = postActivity;
+    @ActivityScope
+    @Provides
+    PostService providesPostsService(@Named("jsonplaceholderapi") Retrofit retrofit) {
+        PostService postService = retrofit.create(PostService.class);
+        return postService;
     }
 
     @ActivityScope
     @Provides
-    PostRouter providesPostRouter() {
-        return this.postActivity;
+    PostModel providesPostModel(PostService postService) {
+        return new PostModel(postService);
     }
 
-    @ActivityScope
-    @Provides
-    PostViewModel providesPostViewModel(PostRouter postRouter) {
-        return new PostViewModel(postRouter);
-    }
 }

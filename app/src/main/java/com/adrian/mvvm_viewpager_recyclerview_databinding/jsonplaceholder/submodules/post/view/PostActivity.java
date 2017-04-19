@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ActivityPostBinding;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di.PostComponent;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.di.PostActivityComponent;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostViewModel;
 
@@ -33,7 +33,7 @@ public class PostActivity extends BaseActivity implements PostRouter {
 
     @Override
     public PostViewModel onCreateViewModel() {
-        PostComponent.Injector.buildComponent(this).inject(this);
+        PostActivityComponent.Injector.buildComponent(this).inject(this);
         return postViewModel;
     }
 
