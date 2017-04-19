@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.TestData;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.model.DataModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
@@ -65,14 +65,14 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    TestData providesTestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
-        return new TestData(postsViewModel, commentListViewModel, albumListViewModel, photosViewModel);
+    ViewPagerModel providesTestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
+        return new ViewPagerModel(postsViewModel, commentListViewModel, albumListViewModel, photosViewModel);
     }
 
     @ActivityScope
     @Provides
-    JsonPlaceholderViewModel providesJsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, TestData testData) {
-        return new JsonPlaceholderViewModel(jsonPlaceholderRouter, testData);
+    JsonPlaceholderViewModel providesJsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, ViewPagerModel viewPagerModel) {
+        return new JsonPlaceholderViewModel(jsonPlaceholderRouter, viewPagerModel);
     }
 
     @ActivityScope

@@ -13,7 +13,7 @@ import java.util.List;
  * Created by cadri on 2017. 03. 26..
  */
 
-public class TestData {
+public class ViewPagerModel {
 
     private PostListViewModel postsViewModel;
 
@@ -23,7 +23,7 @@ public class TestData {
 
     private PhotoListViewModel photosViewModel;
 
-    public TestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
+    public ViewPagerModel(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
         this.postsViewModel = postsViewModel;
         this.commentListViewModel = commentListViewModel;
         this.albumListViewModel = albumListViewModel;

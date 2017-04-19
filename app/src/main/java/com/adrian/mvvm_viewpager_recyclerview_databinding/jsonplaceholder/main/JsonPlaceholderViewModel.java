@@ -4,7 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.TestData;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.adapter.ViewPagerWithDifferentLayoutsAdapter;
 
 /**
@@ -19,17 +19,17 @@ public class JsonPlaceholderViewModel extends BaseViewModel {
 
     private TabLayout tabLayout;
 
-    private TestData testData;
+    private ViewPagerModel viewPagerModel;
 
-    public JsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, TestData testData) {
+    public JsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, ViewPagerModel viewPagerModel) {
         this.jsonPlaceholderRouter = jsonPlaceholderRouter;
-        this.testData = testData;
+        this.viewPagerModel = viewPagerModel;
     }
 
     public void setUpViewPager() {
         this.viewPager = ((JsonPlaceholderActivity)jsonPlaceholderRouter).getBinding().viewpager;
         this.tabLayout = ((JsonPlaceholderActivity)jsonPlaceholderRouter).getBinding().tabs;
-        viewPager.setAdapter(new ViewPagerWithDifferentLayoutsAdapter((JsonPlaceholderActivity)jsonPlaceholderRouter, testData.getViewPagerDataModel(), testData.getTitleList()));
+        viewPager.setAdapter(new ViewPagerWithDifferentLayoutsAdapter((JsonPlaceholderActivity)jsonPlaceholderRouter, viewPagerModel.getViewPagerDataModel(), viewPagerModel.getTitleList()));
         tabLayout.setupWithViewPager(viewPager);
     }
 
