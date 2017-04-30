@@ -66,7 +66,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         }
         if (position == 2) {
             ViewpagerLayoutAlbumsBinding viewpagerLayoutAlbumsBinding = ViewpagerLayoutAlbumsBinding.inflate(layoutInflater, collection, false);
-            viewpagerLayoutAlbumsBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+            viewpagerLayoutAlbumsBinding.rvAlbums.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
             viewpagerLayoutAlbumsBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
             collection.addView(viewpagerLayoutAlbumsBinding.getRoot());
@@ -75,7 +75,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         if (position == 3) {
             ViewpagerLayoutPhotosBinding viewpagerLayoutPhotosBinding = ViewpagerLayoutPhotosBinding.inflate(layoutInflater, collection, false);
-            viewpagerLayoutPhotosBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+            viewpagerLayoutPhotosBinding.rvPhotos.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
             viewpagerLayoutPhotosBinding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
             collection.addView(viewpagerLayoutPhotosBinding.getRoot());

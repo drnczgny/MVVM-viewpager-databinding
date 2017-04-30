@@ -22,7 +22,7 @@
             android:text="Photos recyclerview"/>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvComments"
+            android:id="@+id/rvPhotos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:listItemLayout="@{viewModel.itemLayoutId}"

@@ -41,7 +41,7 @@ public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceho
     private void setupViewPager() {
         this.viewPager = binding.viewPager;
         this.tabLayout = binding.tabLayout;
-        viewPager.setAdapter(new ViewPagerAdapter(this, jsonPlaceholderViewModel.getViewPagerController().getViewPagerDataModel(), jsonPlaceholderViewModel.getViewPagerController().getTitleList()));
+        viewPager.setAdapter(new ViewPagerAdapter(this, jsonPlaceholderViewModel.getViewPagerDataModel(), jsonPlaceholderViewModel.getTitleList()));
         tabLayout.setupWithViewPager(viewPager);
     }
 

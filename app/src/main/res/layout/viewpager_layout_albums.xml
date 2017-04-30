@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.adrian.mymvvmexample.jpcomment.view.CommentsActivity">
+    tools:context="com.example.adrian.mymvvmexample.jpalbum.view.AlbumsActivity">
 
     <data>
 
@@ -22,7 +22,7 @@
             android:text="Albums recyclerview"/>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvComments"
+            android:id="@+id/rvAlbums"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:listItemLayout="@{viewModel.itemLayoutId}"
