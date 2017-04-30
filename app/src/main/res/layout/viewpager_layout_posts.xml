@@ -30,7 +30,7 @@
             app:listItems="@{viewModel.postItemViewModels}"
             app:variableId="@{viewModel.variableId}"
             app:handler="@{viewModel.postItemHandler}"
-            app:handlerId="@{viewModel.handlerId}"/>
+            app:listItemHandlerId="@{viewModel.postItemHandlerId}"/>
 
     </LinearLayout>
 

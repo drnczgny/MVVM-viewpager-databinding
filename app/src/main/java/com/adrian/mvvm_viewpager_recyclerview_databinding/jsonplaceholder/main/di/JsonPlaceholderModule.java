@@ -14,6 +14,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.model.PhotoModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.router.PhotoListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.photos.viewmodel.PhotoListViewModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.handler.PostItemHandler;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel;
@@ -72,8 +73,14 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    PostListViewModel providesPostsViewModel(PostListRouter postListRouter, PostModel postModel) {
-        return new PostListViewModel(postListRouter, postModel);
+    PostItemHandler providesPostItemHandler() {
+        return new PostItemHandler();
+    }
+
+    @ActivityScope
+    @Provides
+    PostListViewModel providesPostsViewModel(PostListRouter postListRouter, PostModel postModel, PostItemHandler postItemHandler) {
+        return new PostListViewModel(postListRouter, postModel, postItemHandler);
     }
 
     @ActivityScope

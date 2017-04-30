@@ -20,12 +20,6 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="btn"
-            android:onClick="@{viewModel::onItemClick}"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="handler btn"
             android:onClick="@{handler::onItemClick}"/>
 

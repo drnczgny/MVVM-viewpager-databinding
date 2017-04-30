@@ -2,14 +2,12 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.commo
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.RvItemPostBinding;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.handler.PostItemHandler;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostItemViewModel;
-import com.android.databinding.library.baseAdapters.BR;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +16,19 @@ import java.util.List;
  * Created by Adrian_Czigany on 3/22/2017.
  */
 
-public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder> {
+public class RecyclerViewAdapter<T extends ListItemViewModel, H extends BaseHandler> extends RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder> {
 
     private List<T> items = new ArrayList<>();
 
     private int itemLayout;
 
+    @IdRes
     private int variableId;
 
-    private int handlerId = BR.handler;
+    @IdRes
+    private int itemHandlerId;
 
-    private PostItemHandler postItemHandler;
+    private H itemHandler;
 
     public RecyclerViewAdapter() {
     }
@@ -51,11 +51,9 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
         final T itemViewModel = items.get(position);
         holder.bind(itemViewModel, variableId);
 
-        if(itemViewModel instanceof PostItemViewModel) {
-//            holder.setHandler(postItemHandler, handlerId);
-
-            holder.bindHandler((PostItemHandler) postItemHandler, handlerId);
-        }
+//        if (itemViewModel instanceof PostItemViewModel) {
+            holder.bindHandler(itemHandler, itemHandlerId);
+//        }
     }
 
     @Override
@@ -63,7 +61,7 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
         return items.size();
     }
 
-    static class BindingViewHolder<T extends ListItemViewModel> extends RecyclerView.ViewHolder {
+    static class BindingViewHolder<T extends ListItemViewModel, H extends BaseHandler> extends RecyclerView.ViewHolder {
 
         private final ViewDataBinding binding;
 
@@ -77,21 +75,12 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
             binding.executePendingBindings();
         }
 
-        public void bindHandler(PostItemHandler itemHandler, int handlerId) {
-            if(binding instanceof RvItemPostBinding) {
-//                ((RvItemPostBinding) binding).setHandler(handlerId);
+        public void bindHandler(H itemHandler, int handlerId) {
+
                 binding.setVariable(handlerId, itemHandler);
                 binding.executePendingBindings();
-            }
-        }
 
-        public void setHandler(PostItemHandler postItemHandler, int handlerId) {
-            if(binding instanceof RvItemPostBinding) {
-                binding.setVariable(handlerId, postItemHandler);
-                binding.executePendingBindings();
-            }
         }
-
 
         public ViewDataBinding getBinding() {
             return this.binding;
@@ -124,19 +113,19 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
     }
 
 
-    public int getHandlerId() {
-        return handlerId;
+    public int getItemHandlerId() {
+        return itemHandlerId;
     }
 
-    public void setHandlerId(int handlerId) {
-        this.handlerId = handlerId;
+    public void setItemHandlerId(int itemHandlerId) {
+        this.itemHandlerId = itemHandlerId;
     }
 
-    public PostItemHandler getPostItemHandler() {
-        return postItemHandler;
+    public H getItemHandler() {
+        return itemHandler;
     }
 
-    public void setPostItemHandler(PostItemHandler itemHandler) {
-        this.postItemHandler = itemHandler;
+    public void setItemHandler(H itemHandler) {
+        this.itemHandler = itemHandler;
     }
 }

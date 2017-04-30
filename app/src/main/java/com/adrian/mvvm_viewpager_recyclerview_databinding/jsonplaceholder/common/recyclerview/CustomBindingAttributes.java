@@ -3,7 +3,7 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.commo
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.handler.PostItemHandler;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseHandler;
 
 import java.util.List;
 
@@ -13,35 +13,25 @@ import java.util.List;
 
 public final class CustomBindingAttributes {
 
-    private static final String TAG = CustomBindingAttributes.class.getName();
+    private static final String TAG = CustomBindingAttributes.class.getSimpleName();
 
     private CustomBindingAttributes() {
     }
 
     @BindingAdapter(value = {"listItems", "listItemLayout", "variableId"}, requireAll = true)
     public static void setupRecyclerViewAdapter(RecyclerView recyclerView, List<? extends ListItemViewModel> items, int itemLayout, int variableId) {
-//        RecyclerViewAdapter<T> recyclerViewAdapter = new RecyclerViewAdapter(items, itemLayout, variableId);
         RecyclerViewAdapter recyclerViewAdapter = getAdapter(recyclerView);
         recyclerViewAdapter.setItems(items);
         recyclerViewAdapter.setItemLayout(itemLayout);
         recyclerViewAdapter.setVariableId(variableId);
-//        recyclerView.setAdapter(recyclerViewAdapter);
-
     }
 
-
-    @BindingAdapter(value = {"handler", "handlerId"}, requireAll = true)
-    public static void setupRecyclerViewAdapterHandler(RecyclerView recyclerView, Object handler, int handlerId) {
+    @BindingAdapter(value = {"handler", "listItemHandlerId"}, requireAll = true)
+    public static void setupRecyclerViewAdapterHandler(RecyclerView recyclerView, BaseHandler handler, int handlerId) {
         RecyclerViewAdapter recyclerViewAdapter = getAdapter(recyclerView);
-        recyclerViewAdapter.setPostItemHandler((PostItemHandler) handler);
-        recyclerViewAdapter.setHandlerId(handlerId);
-
+        recyclerViewAdapter.setItemHandler(handler);
+        recyclerViewAdapter.setItemHandlerId(handlerId);
     }
-
-//    @BindingAdapter("onItemClickListener")
-//    public static void setupRecyclerViewAdapter(RecyclerView recyclerView, RecyclerViewAdapter.OnItemClickListener onItemClickListener) {
-//        getAdapter(recyclerView).setOnItemClickListener(onItemClickListener);
-//    }
 
     private static RecyclerViewAdapter getAdapter(RecyclerView recyclerView) {
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) recyclerView.getAdapter();
