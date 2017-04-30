@@ -25,6 +25,8 @@ public class PostListViewModel extends ViewPagerItemViewModel implements PostMod
 
     private List<PostItemViewModel> postItemViewModels = new ArrayList<>();
 
+    private PostItemHandler postItemHandler = new PostItemHandler();
+
     public PostListViewModel(PostListRouter postListRouter, PostModel postModel) {
         this.postListRouter = postListRouter;
         this.postModel = postModel;
@@ -84,4 +86,13 @@ public class PostListViewModel extends ViewPagerItemViewModel implements PostMod
         return BR.handler;
     }
 
+    @Bindable
+    public PostItemHandler getPostItemHandler() {
+        return postItemHandler;
+    }
+
+    public void setPostItemHandler(PostItemHandler postItemHandler) {
+        this.postItemHandler = postItemHandler;
+        notifyPropertyChanged(BR.postItemHandler);
+    }
 }

@@ -28,7 +28,7 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
 
     private int handlerId = BR.handler;
 
-    private PostItemHandler itemHandler = new PostItemHandler();
+    private PostItemHandler postItemHandler;
 
     public RecyclerViewAdapter() {
     }
@@ -54,7 +54,7 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
         if(itemViewModel instanceof PostItemViewModel) {
 //            holder.setHandler(postItemHandler, handlerId);
 
-            holder.bindHandler((PostItemHandler) itemHandler, handlerId);
+            holder.bindHandler((PostItemHandler) postItemHandler, handlerId);
         }
     }
 
@@ -123,4 +123,20 @@ public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends Recycle
         this.variableId = variableId;
     }
 
+
+    public int getHandlerId() {
+        return handlerId;
+    }
+
+    public void setHandlerId(int handlerId) {
+        this.handlerId = handlerId;
+    }
+
+    public PostItemHandler getPostItemHandler() {
+        return postItemHandler;
+    }
+
+    public void setPostItemHandler(PostItemHandler itemHandler) {
+        this.postItemHandler = itemHandler;
+    }
 }

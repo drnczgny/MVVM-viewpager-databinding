@@ -3,6 +3,8 @@ package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.commo
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.handler.PostItemHandler;
+
 import java.util.List;
 
 /**
@@ -24,6 +26,15 @@ public final class CustomBindingAttributes {
         recyclerViewAdapter.setItemLayout(itemLayout);
         recyclerViewAdapter.setVariableId(variableId);
 //        recyclerView.setAdapter(recyclerViewAdapter);
+
+    }
+
+
+    @BindingAdapter(value = {"handler", "handlerId"}, requireAll = true)
+    public static void setupRecyclerViewAdapterHandler(RecyclerView recyclerView, Object handler, int handlerId) {
+        RecyclerViewAdapter recyclerViewAdapter = getAdapter(recyclerView);
+        recyclerViewAdapter.setPostItemHandler((PostItemHandler) handler);
+        recyclerViewAdapter.setHandlerId(handlerId);
 
     }
 

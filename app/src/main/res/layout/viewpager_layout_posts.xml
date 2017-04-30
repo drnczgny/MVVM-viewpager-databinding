@@ -28,7 +28,9 @@
             android:layout_height="wrap_content"
             app:listItemLayout="@{viewModel.itemLayoutId}"
             app:listItems="@{viewModel.postItemViewModels}"
-            app:variableId="@{viewModel.variableId}"/>
+            app:variableId="@{viewModel.variableId}"
+            app:handler="@{viewModel.postItemHandler}"
+            app:handlerId="@{viewModel.handlerId}"/>
 
     </LinearLayout>
 
