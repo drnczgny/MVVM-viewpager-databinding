@@ -1,7 +1,7 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.scope.ActivityScope;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerModel;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerHelper;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.JsonPlaceholderViewModel;
@@ -66,8 +66,8 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    JsonPlaceholderViewModel providesJsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, ViewPagerModel viewPagerModel) {
-        return new JsonPlaceholderViewModel(jsonPlaceholderRouter, viewPagerModel);
+    JsonPlaceholderViewModel providesJsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, ViewPagerHelper viewPagerHelper) {
+        return new JsonPlaceholderViewModel(jsonPlaceholderRouter, viewPagerHelper);
     }
 
     @ActivityScope
@@ -96,8 +96,8 @@ public class JsonPlaceholderModule {
 
     @ActivityScope
     @Provides
-    ViewPagerModel providesTestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
-        return new ViewPagerModel(postsViewModel, commentListViewModel, albumListViewModel, photosViewModel);
+    ViewPagerHelper providesTestData(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
+        return new ViewPagerHelper(postsViewModel, commentListViewModel, albumListViewModel, photosViewModel);
     }
 
 }

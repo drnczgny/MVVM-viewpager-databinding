@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -44,14 +43,14 @@ public class RecyclerViewAdapter<T extends ListItemViewModel> extends RecyclerVi
     public void onBindViewHolder(BindingViewHolder holder, final int position) {
         final T itemViewModel = items.get(position);
 
-        holder.getBinding().getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(position, itemViewModel);
-                }
-            }
-        });
+//        holder.getBinding().getRoot().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (onItemClickListener != null) {
+//                    onItemClickListener.onItemClick(position, itemViewModel);
+//                }
+//            }
+//        });
 
         holder.bind(itemViewModel, variableId);
     }

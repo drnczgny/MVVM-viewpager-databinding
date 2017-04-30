@@ -1,6 +1,8 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel;
 
 import android.databinding.Bindable;
+import android.util.Log;
+import android.view.View;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.recyclerview.ListItemViewModel;
@@ -13,10 +15,16 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
 
 public class PostItemViewModel extends ListItemViewModel {
 
+    private static final String TAG = PostItemViewModel.class.getSimpleName();
+
     private Post post;
 
     public PostItemViewModel(Post post) {
         this.post = post;
+    }
+
+    public void onItemClick(View view) {
+        Log.i(TAG, "onItemClick ...");
     }
 
     @Bindable

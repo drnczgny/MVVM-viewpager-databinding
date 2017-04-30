@@ -21,9 +21,9 @@ import java.util.List;
  * Created by cadri on 2017. 03. 26..
  */
 
-public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
+public class ViewPagerAdapter extends PagerAdapter {
 
-    private static final String TAG = ViewPagerWithDifferentLayoutsAdapter.class.getName();
+    private static final String TAG = ViewPagerAdapter.class.getName();
 
     private Context context;
 
@@ -33,7 +33,7 @@ public class ViewPagerWithDifferentLayoutsAdapter extends PagerAdapter {
 
     private LayoutInflater layoutInflater;
 
-    public ViewPagerWithDifferentLayoutsAdapter(Context context, List<DataModel> itemList, List<String> titleList) {
+    public ViewPagerAdapter(Context context, List<DataModel> itemList, List<String> titleList) {
         this.context = context;
         this.itemList = itemList;
         this.titleList = titleList;
