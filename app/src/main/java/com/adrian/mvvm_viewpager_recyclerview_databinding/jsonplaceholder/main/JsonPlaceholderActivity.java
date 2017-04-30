@@ -1,10 +1,14 @@
 package com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main;
 
-import javax.inject.Inject;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseActivity;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.ActivityJsonPlaceholderBinding;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.adapter.ViewPagerAdapter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.main.di.JsonPlaceholderComponent;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.album.router.AlbumListRouter;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.comment.router.CommentListRouter;
@@ -12,10 +16,13 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submod
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
 import com.android.databinding.library.baseAdapters.BR;
 
-import android.databinding.DataBindingUtil;
-import android.os.Bundle;
+import javax.inject.Inject;
 
 public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceholderRouter, PostListRouter, CommentListRouter, AlbumListRouter, PhotoListRouter {
+
+    private ViewPager viewPager;
+
+    private TabLayout tabLayout;
 
     @Inject
     JsonPlaceholderViewModel jsonPlaceholderViewModel;
@@ -28,7 +35,14 @@ public class JsonPlaceholderActivity extends BaseActivity implements JsonPlaceho
         bind();
         setSupportActionBar(binding.toolbar);
 
-        jsonPlaceholderViewModel.setUpViewPager();
+        setupViewPager();
+    }
+
+    private void setupViewPager() {
+        this.viewPager = binding.viewPager;
+        this.tabLayout = binding.tabLayout;
+        viewPager.setAdapter(new ViewPagerAdapter(this, jsonPlaceholderViewModel.getViewPagerController().getViewPagerDataModel(), jsonPlaceholderViewModel.getViewPagerController().getTitleList()));
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override

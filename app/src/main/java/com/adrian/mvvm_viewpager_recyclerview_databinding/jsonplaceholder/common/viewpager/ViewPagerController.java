@@ -13,7 +13,7 @@ import java.util.List;
  * Created by cadri on 2017. 03. 26..
  */
 
-public class ViewPagerHelper {
+public class ViewPagerController {
 
     private PostListViewModel postsViewModel;
 
@@ -23,7 +23,7 @@ public class ViewPagerHelper {
 
     private PhotoListViewModel photosViewModel;
 
-    public ViewPagerHelper(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
+    public ViewPagerController(PostListViewModel postsViewModel, CommentListViewModel commentListViewModel, AlbumListViewModel albumListViewModel, PhotoListViewModel photosViewModel) {
         this.postsViewModel = postsViewModel;
         this.commentListViewModel = commentListViewModel;
         this.albumListViewModel = albumListViewModel;

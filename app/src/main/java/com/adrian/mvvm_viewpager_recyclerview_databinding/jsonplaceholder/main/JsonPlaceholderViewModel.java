@@ -4,8 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.adrian.mvvm_viewpager_recyclerview_databinding.base.BaseViewModel;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerHelper;
-import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.adapter.ViewPagerAdapter;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerController;
 
 /**
  * Created by cadri on 2017. 04. 09..
@@ -19,19 +18,14 @@ public class JsonPlaceholderViewModel extends BaseViewModel {
 
     private TabLayout tabLayout;
 
-    private ViewPagerHelper viewPagerHelper;
+    private ViewPagerController viewPagerController;
 
-    public JsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, ViewPagerHelper viewPagerHelper) {
+    public JsonPlaceholderViewModel(JsonPlaceholderRouter jsonPlaceholderRouter, ViewPagerController viewPagerController) {
         this.jsonPlaceholderRouter = jsonPlaceholderRouter;
-        this.viewPagerHelper = viewPagerHelper;
+        this.viewPagerController = viewPagerController;
     }
 
-    public void setUpViewPager() {
-        this.viewPager = ((JsonPlaceholderActivity)jsonPlaceholderRouter).getBinding().viewpager;
-        this.tabLayout = ((JsonPlaceholderActivity)jsonPlaceholderRouter).getBinding().tabs;
-        viewPager.setAdapter(new ViewPagerAdapter((JsonPlaceholderActivity)jsonPlaceholderRouter, viewPagerHelper.getViewPagerDataModel(), viewPagerHelper.getTitleList()));
-        tabLayout.setupWithViewPager(viewPager);
+    public ViewPagerController getViewPagerController() {
+        return viewPagerController;
     }
-
-
 }
