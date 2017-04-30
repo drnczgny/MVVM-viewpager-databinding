@@ -14,9 +14,9 @@ public class PostItemHandler extends BaseHandler {
 
     private static final String TAG = PostItemViewModel.class.getSimpleName();
 
-    public void onItemClick(View view) {
+    public void onClickItem(View view, PostItemViewModel postItemViewModel) {
         Log.i(TAG, "onItemClick (PostItemHandler)...");
-
+        Log.i(TAG, "postItem: " + postItemViewModel.toString());
     }
 
 }

@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="handler btn"
-            android:onClick="@{handler::onItemClick}"/>
+            android:onClick="@{(v) -> handler.onClickItem(v, viewModel)}" />
 
         <LinearLayout
             android:layout_width="wrap_content"
