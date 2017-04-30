@@ -55,8 +55,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             collection.addView(viewpagerLayoutPostsBinding.getRoot());
             return viewpagerLayoutPostsBinding.getRoot();
         }
-
-        if (position == 1) {
+        else if (position == 1) {
             ViewpagerLayoutCommentsBinding viewpagerLayoutCommentsBinding = ViewpagerLayoutCommentsBinding.inflate(layoutInflater, collection, false);
             viewpagerLayoutCommentsBinding.rvComments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
@@ -64,7 +63,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             collection.addView(viewpagerLayoutCommentsBinding.getRoot());
             return viewpagerLayoutCommentsBinding.getRoot();
         }
-        if (position == 2) {
+        else if (position == 2) {
             ViewpagerLayoutAlbumsBinding viewpagerLayoutAlbumsBinding = ViewpagerLayoutAlbumsBinding.inflate(layoutInflater, collection, false);
             viewpagerLayoutAlbumsBinding.rvAlbums.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
@@ -72,8 +71,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             collection.addView(viewpagerLayoutAlbumsBinding.getRoot());
             return viewpagerLayoutAlbumsBinding.getRoot();
         }
-
-        if (position == 3) {
+        else if (position == 3) {
             ViewpagerLayoutPhotosBinding viewpagerLayoutPhotosBinding = ViewpagerLayoutPhotosBinding.inflate(layoutInflater, collection, false);
             viewpagerLayoutPhotosBinding.rvPhotos.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
@@ -81,10 +79,12 @@ public class ViewPagerAdapter extends PagerAdapter {
             collection.addView(viewpagerLayoutPhotosBinding.getRoot());
             return viewpagerLayoutPhotosBinding.getRoot();
         }
-
-        binding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
-        collection.addView(binding.getRoot());
-        return binding.getRoot();
+        else {
+            throw new IllegalStateException("Unused else case");
+//            binding.setVariable(dataModel.getViewPagerItemViewModel().getVariableId(), dataModel.getViewPagerItemViewModel());
+//            collection.addView(binding.getRoot());
+//            return binding.getRoot();
+        }
     }
 
     @Override
