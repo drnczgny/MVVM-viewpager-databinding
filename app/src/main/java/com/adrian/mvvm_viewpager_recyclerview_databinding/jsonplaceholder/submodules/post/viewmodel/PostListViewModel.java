@@ -6,6 +6,7 @@ import com.adrian.mvvm_viewpager_recyclerview_databinding.BR;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.R;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.common.viewpager.ViewPagerItemViewModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.domain.Post;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.handler.PostItemHandler;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.model.PostModel;
 import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.router.PostListRouter;
 
@@ -76,4 +77,11 @@ public class PostListViewModel extends ViewPagerItemViewModel implements PostMod
     public int getVariableId() {
         return BR.viewModel;
     }
+
+
+    @Bindable
+    public int getHandlerId() {
+        return BR.handler;
+    }
+
 }

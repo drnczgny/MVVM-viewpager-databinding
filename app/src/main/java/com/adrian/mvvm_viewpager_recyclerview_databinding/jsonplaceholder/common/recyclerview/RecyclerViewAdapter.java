@@ -6,6 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.adrian.mvvm_viewpager_recyclerview_databinding.databinding.RvItemPostBinding;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.handler.PostItemHandler;
+import com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostItemViewModel;
+import com.android.databinding.library.baseAdapters.BR;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +18,7 @@ import java.util.List;
  * Created by Adrian_Czigany on 3/22/2017.
  */
 
-public class RecyclerViewAdapter<T extends ListItemViewModel> extends RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder> {
+public class RecyclerViewAdapter<T extends ListItemViewModel, H> extends RecyclerView.Adapter<RecyclerViewAdapter.BindingViewHolder> {
 
     private List<T> items = new ArrayList<>();
 
@@ -21,7 +26,9 @@ public class RecyclerViewAdapter<T extends ListItemViewModel> extends RecyclerVi
 
     private int variableId;
 
-    private OnItemClickListener<T> onItemClickListener;
+    private int handlerId = BR.handler;
+
+    private PostItemHandler itemHandler = new PostItemHandler();
 
     public RecyclerViewAdapter() {
     }
@@ -42,17 +49,13 @@ public class RecyclerViewAdapter<T extends ListItemViewModel> extends RecyclerVi
     @Override
     public void onBindViewHolder(BindingViewHolder holder, final int position) {
         final T itemViewModel = items.get(position);
-
-//        holder.getBinding().getRoot().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onItemClickListener != null) {
-//                    onItemClickListener.onItemClick(position, itemViewModel);
-//                }
-//            }
-//        });
-
         holder.bind(itemViewModel, variableId);
+
+        if(itemViewModel instanceof PostItemViewModel) {
+//            holder.setHandler(postItemHandler, handlerId);
+
+            holder.bindHandler((PostItemHandler) itemHandler, handlerId);
+        }
     }
 
     @Override
@@ -74,19 +77,26 @@ public class RecyclerViewAdapter<T extends ListItemViewModel> extends RecyclerVi
             binding.executePendingBindings();
         }
 
+        public void bindHandler(PostItemHandler itemHandler, int handlerId) {
+            if(binding instanceof RvItemPostBinding) {
+//                ((RvItemPostBinding) binding).setHandler(handlerId);
+                binding.setVariable(handlerId, itemHandler);
+                binding.executePendingBindings();
+            }
+        }
+
+        public void setHandler(PostItemHandler postItemHandler, int handlerId) {
+            if(binding instanceof RvItemPostBinding) {
+                binding.setVariable(handlerId, postItemHandler);
+                binding.executePendingBindings();
+            }
+        }
+
+
         public ViewDataBinding getBinding() {
             return this.binding;
         }
     }
-
-    public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
-
-    public interface OnItemClickListener<T> {
-        void onItemClick(int position, T item);
-    }
-
 
     public List<T> getItems() {
         return items;
@@ -112,4 +122,5 @@ public class RecyclerViewAdapter<T extends ListItemViewModel> extends RecyclerVi
     public void setVariableId(int variableId) {
         this.variableId = variableId;
     }
+
 }

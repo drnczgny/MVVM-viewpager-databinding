@@ -27,10 +27,10 @@ public final class CustomBindingAttributes {
 
     }
 
-    @BindingAdapter("onItemClickListener")
-    public static void setupRecyclerViewAdapter(RecyclerView recyclerView, RecyclerViewAdapter.OnItemClickListener onItemClickListener) {
-        getAdapter(recyclerView).setOnItemClickListener(onItemClickListener);
-    }
+//    @BindingAdapter("onItemClickListener")
+//    public static void setupRecyclerViewAdapter(RecyclerView recyclerView, RecyclerViewAdapter.OnItemClickListener onItemClickListener) {
+//        getAdapter(recyclerView).setOnItemClickListener(onItemClickListener);
+//    }
 
     private static RecyclerViewAdapter getAdapter(RecyclerView recyclerView) {
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) recyclerView.getAdapter();

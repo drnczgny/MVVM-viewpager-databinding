@@ -9,6 +9,7 @@
         <variable
             name="viewModel"
             type="com.adrian.mvvm_viewpager_recyclerview_databinding.jsonplaceholder.submodules.post.viewmodel.PostListViewModel"/>
+
     </data>
 
     <LinearLayout
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             app:listItemLayout="@{viewModel.itemLayoutId}"
             app:listItems="@{viewModel.postItemViewModels}"
-            app:variableId="@{viewModel.variableId}" />
+            app:variableId="@{viewModel.variableId}"/>
 
     </LinearLayout>
 
