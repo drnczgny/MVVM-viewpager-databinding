@@ -66,7 +66,7 @@ public class PostListViewModel extends ViewPagerItemViewModel implements PostMod
 
     @Bindable
     public int getItemLayoutId() {
-        return R.layout.rv_item_post;
+        return R.layout.rv_item_post_2;
     }
 
     @Bindable
